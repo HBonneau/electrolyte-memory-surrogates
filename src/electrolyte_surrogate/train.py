@@ -57,13 +57,8 @@ def fine_tune_gru(model, optimizer, rng, fields, targets, val_fields, val_target
     return best_weights, best_epoch, history
 
 
-def train_gru(data, epochs=20, seed=13, warmup_epochs=120):
-    """Warm up on the 12-time prefix, then train and validate through time 100.
-
-    This reproduces the recorded long-history model. Output normalization is
-    fixed from the training prefix; the optimizer and RNG continue unchanged.
-    The final checkpoint is selected using complete 100-time validation data.
-    """
+def warmup_gru(data, seed=13, epochs=120):
+    """Fit the common early-time initialization used by both loss experiments."""
     torch.manual_seed(seed)
     rng = np.random.default_rng(seed)
     field, target = split_arrays(data, "train")
@@ -76,14 +71,24 @@ def train_gru(data, epochs=20, seed=13, warmup_epochs=120):
     optimizer = torch.optim.Adam(model.parameters(), lr=.003)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=.5, patience=7)
     history = []
-    for epoch in range(1, warmup_epochs + 1):
+    for epoch in range(1, epochs + 1):
         training = _train_epoch(model, optimizer, rng, fields[:, :241], targets[:, :241])
         validation, _ = _validation(model, val_fields[:, :241], val_targets[:, :241])
         scheduler.step(validation)
         history.append(dict(phase="warmup", epoch=epoch,
                             training_mse=training, validation_mse=validation))
         if epoch == 1 or epoch % 10 == 0:
-            print(f"Warm-up {epoch}/{warmup_epochs}: validation MSE={validation:.6g}", flush=True)
+            print(f"Warm-up {epoch}/{epochs}: validation MSE={validation:.6g}", flush=True)
+    return model, optimizer, rng, scale, history
+
+
+def train_gru(data, epochs=20, seed=13, warmup_epochs=120):
+    """Warm up on the prefix, then select by full 100-time validation MSE."""
+    model, optimizer, rng, scale, history = warmup_gru(data, seed, warmup_epochs)
+    field, target = split_arrays(data, "train")
+    val_field, val_target = split_arrays(data, "validation")
+    fields, targets = torch.from_numpy(field), torch.from_numpy(target / scale)
+    val_fields, val_targets = torch.from_numpy(val_field), torch.from_numpy(val_target / scale)
     best_weights, best_epoch, long_history = fine_tune_gru(
         model, optimizer, rng, fields, targets, val_fields, val_targets, epochs
     )
@@ -100,6 +105,7 @@ def main():
     parser.add_argument("--data", type=Path, default=Path("data/dataset.npz"))
     parser.add_argument("--epochs", type=int, default=20, help="GRU epochs on complete 100-time histories")
     parser.add_argument("--warmup-epochs", type=int, default=120, help="Initial GRU epochs on the prefix")
+    parser.add_argument("--seed", type=int, default=13)
     parser.add_argument("--output", type=Path, default=Path("runs/training"))
     args = parser.parse_args()
     if args.epochs < 1 or args.warmup_epochs < 1:
@@ -113,12 +119,13 @@ def main():
     else:
         data = load_dataset(args.data)
         if args.model == "gru":
-            checkpoint, history = train_gru(data, epochs=args.epochs, warmup_epochs=args.warmup_epochs)
+            checkpoint, history = train_gru(data, epochs=args.epochs, seed=args.seed,
+                                            warmup_epochs=args.warmup_epochs)
             torch.save(checkpoint, args.output / "gru.pt")
             (args.output / "training_history.json").write_text(json.dumps(history, indent=2) + "\n")
             selected = next(row for row in history if row["phase"] == "long"
                             and row["epoch"] == checkpoint["selected_additional_epoch"])
-            report = dict(epochs=args.epochs, warmup_epochs=args.warmup_epochs,
+            report = dict(seed=args.seed, epochs=args.epochs, warmup_epochs=args.warmup_epochs,
                           selected_additional_epoch=checkpoint["selected_additional_epoch"],
                           validation_scaled_mse=selected["validation_mse"])
         else:

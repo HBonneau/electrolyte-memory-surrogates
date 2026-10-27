@@ -11,7 +11,9 @@ from electrolyte_surrogate.baseline import load_baseline, predict_baseline
 from electrolyte_surrogate.data import current_coefficients, load_dataset
 from electrolyte_surrogate.generate_data import histories
 from electrolyte_surrogate.model import load_gru, predict
+from electrolyte_surrogate.losses import TailLoss, calibrate_epsilon, elapsed_since_change, stationary_targets
 from electrolyte_surrogate.physics import solve_current, unit_parameters, reference_coefficients
+from electrolyte_surrogate.physics import stationary_coefficients
 from electrolyte_surrogate.reduction import CovarianceModes
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,6 +111,34 @@ class ModelTests(unittest.TestCase):
         actual, _ = self.physical.predict(tau, field, initial_field=1.6)
         assert_allclose(actual[:, 0], expected[:, 0], atol=1e-6, rtol=0)
         assert_allclose(actual[:, 1], expected[:, 1], atol=1e-5, rtol=0)
+
+
+class LossTests(unittest.TestCase):
+    def test_stationary_centers_match_independent_reference(self):
+        fields = np.array([0., .001, -.3, 1.2, 3., -5.])
+        expected = np.stack([stationary_coefficients(f) for f in fields])
+        assert_allclose(stationary_targets(fields), expected, rtol=1e-10, atol=1e-12)
+
+    def test_tail_loss_masks_prehistory_and_calibration_uses_only_training(self):
+        data = load_dataset(ROOT / "data/dataset.npz")
+        train = data["split"] == "train"
+        scale = np.sqrt(np.mean(data["target"][train, :241]**2, axis=(0, 1))).astype(np.float32)
+        epsilon, _ = calibrate_epsilon(data, scale)
+        altered = {**data, "target": data["target"].copy()}
+        altered["target"][~train] = 1e3
+        alternate, _ = calibrate_epsilon(altered, scale)
+        assert_array_equal(epsilon, alternate)
+        indices = np.flatnonzero(train & (data["family"] == "step"))[:2]
+        field, target = data["field"][indices], data["target"][indices]
+        loss = TailLoss(field, target, scale, epsilon)
+        estimate = torch.from_numpy(target / scale).clone().requires_grad_()
+        self.assertEqual(float(loss(estimate)), 0.)
+        loss(estimate + .01).backward()
+        elapsed, changed = elapsed_since_change(field)
+        mask = changed & (elapsed >= 8 - 1e-8)
+        self.assertTrue(torch.isfinite(estimate.grad).all())
+        assert_array_equal(estimate.grad.numpy()[~mask], 0.)
+        self.assertGreater(float(torch.sum(torch.abs(estimate.grad))), 0.)
 
 
 if __name__ == "__main__":
