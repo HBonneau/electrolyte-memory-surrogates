@@ -1,0 +1,41 @@
+{
+  "warmup_first_two_epochs": "exact match (previous check)",
+  "continuation_epochs_checked": 1,
+  "continuation_validation_max_abs_difference": 2.9103830456733704e-11,
+  "continuation_tolerance": {
+    "rtol": 3e-07,
+    "atol": 1e-11
+  },
+  "regenerated_label_histories": 5,
+  "regenerated_labels_max_abs_error": 7.801030266207931e-09,
+  "data_horizon": 100.0,
+  "samples": 2001,
+  "date": "2026-10-26",
+  "unittest_checks": 6,
+  "tests": "PASS",
+  "editable_install": "PASS",
+  "full_evaluation_192_histories": "PASS; complete 100-time histories plus separate early-prefix metrics",
+  "baseline_fit": "Refitted on complete 100-time data; selected 120 lags and ridge 1e-5 using validation only.",
+  "physical_weights": "Existing selected model preserved; five-amplitude tail evaluation repeated.",
+  "physical_worst_tail_relative_rmse": 0.01116901321323547,
+  "generated_field_histories": "All 1088 complete 2001-sample field histories and splits match exactly.",
+  "gru_cli_smoke": "PASS; two prefix warm-up epochs followed by one full-history epoch; smoke artifacts excluded from release.",
+  "full_gru_retraining": "Not repeated. Supplied checkpoint was already trained through 100 times; warm-up trajectory and one continuation epoch verified against the recorded training.",
+  "overview": "Four independent 100-time timing-transfer cases generated and visually inspected.",
+  "removed_plotting": "Compensated tail panels and their plotting code removed from this focused package.",
+  "environment": {
+    "python": "3.11.13",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.16.0",
+      "torch": "2.2.2",
+      "matplotlib": "3.10.0"
+    }
+  },
+  "custom_csv_demo": "PASS; full 100-time paired-pulse CSV.",
+  "generated_figures_visually_inspected": [
+    "field_responses.png",
+    "relaxation.png",
+    "switch_off.png"
+  ]
+}

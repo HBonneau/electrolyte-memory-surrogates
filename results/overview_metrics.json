@@ -1,0 +1,82 @@
+{
+  "step": {
+    "gru": {
+      "Q_el_nrmse": 0.002493838191245056,
+      "hydrodynamic_residual_nrmse": 0.00433564594607961,
+      "Q_el_rmse": 1.525139546711776e-05,
+      "hydrodynamic_residual_rmse": 0.0007963126311316737
+    },
+    "baseline": {
+      "Q_el_nrmse": 0.05502538724688865,
+      "hydrodynamic_residual_nrmse": 0.2543445143373564,
+      "Q_el_rmse": 0.00033651499306561536,
+      "hydrodynamic_residual_rmse": 0.04671455002201627
+    },
+    "physical": {
+      "Q_el_nrmse": 1.1890073108809083e-06,
+      "hydrodynamic_residual_nrmse": 3.7969504899830365e-06,
+      "Q_el_rmse": 7.271530596973294e-09,
+      "hydrodynamic_residual_rmse": 6.973723575581769e-07
+    }
+  },
+  "pulse": {
+    "gru": {
+      "Q_el_nrmse": 0.00562741452351914,
+      "hydrodynamic_residual_nrmse": 0.009011240585817967,
+      "Q_el_rmse": 1.6315717261359195e-05,
+      "hydrodynamic_residual_rmse": 0.0007899579309514767
+    },
+    "baseline": {
+      "Q_el_nrmse": 0.05824712001613298,
+      "hydrodynamic_residual_nrmse": 0.26628872003442683,
+      "Q_el_rmse": 0.00016887747250532702,
+      "hydrodynamic_residual_rmse": 0.02334383199635973
+    },
+    "physical": {
+      "Q_el_nrmse": 3.178488811862335e-06,
+      "hydrodynamic_residual_nrmse": 7.901108137801542e-06,
+      "Q_el_rmse": 9.215479783122287e-09,
+      "hydrodynamic_residual_rmse": 6.926397067441102e-07
+    }
+  },
+  "reversal": {
+    "gru": {
+      "Q_el_nrmse": 0.004078549125314002,
+      "hydrodynamic_residual_nrmse": 0.009809685069094262,
+      "Q_el_rmse": 2.1196687274860458e-05,
+      "hydrodynamic_residual_rmse": 0.0015277746029638327
+    },
+    "baseline": {
+      "Q_el_nrmse": 0.05938875177159032,
+      "hydrodynamic_residual_nrmse": 0.2563956042749483,
+      "Q_el_rmse": 0.00030865014991079655,
+      "hydrodynamic_residual_rmse": 0.03993142386975716
+    },
+    "physical": {
+      "Q_el_nrmse": 3.0582831369981977e-06,
+      "hydrodynamic_residual_nrmse": 6.9076509962423264e-06,
+      "Q_el_rmse": 1.5894247993871885e-08,
+      "hydrodynamic_residual_rmse": 1.0758076007399536e-06
+    }
+  },
+  "oscillatory": {
+    "gru": {
+      "Q_el_nrmse": 0.008332248839907845,
+      "hydrodynamic_residual_nrmse": 0.01247365032550076,
+      "Q_el_rmse": 3.8143912365460624e-05,
+      "hydrodynamic_residual_rmse": 0.001346574490716939
+    },
+    "baseline": {
+      "Q_el_nrmse": 0.0716102489658228,
+      "hydrodynamic_residual_nrmse": 0.331268920040832,
+      "Q_el_rmse": 0.00032782206982807444,
+      "hydrodynamic_residual_rmse": 0.0357616468037736
+    },
+    "physical": {
+      "Q_el_nrmse": 7.962453722430161e-07,
+      "hydrodynamic_residual_nrmse": 8.453875098486105e-06,
+      "Q_el_rmse": 3.645104014989679e-09,
+      "hydrodynamic_residual_rmse": 9.126255954165954e-07
+    }
+  }
+}

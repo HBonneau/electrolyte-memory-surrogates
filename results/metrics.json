@@ -1,0 +1,308 @@
+{
+  "data_horizon": 100,
+  "ordinary": {
+    "test": {
+      "gru": {
+        "Q_el_nrmse": 0.005554099101573229,
+        "hydrodynamic_residual_nrmse": 0.00618400052189827,
+        "Q_el_rmse": 1.7134010704467073e-05,
+        "hydrodynamic_residual_rmse": 0.0008490767213515937
+      },
+      "baseline": {
+        "Q_el_nrmse": 0.06380737601510915,
+        "hydrodynamic_residual_nrmse": 0.18102580426128567,
+        "Q_el_rmse": 0.0001968413262186496,
+        "hydrodynamic_residual_rmse": 0.024855236685927342
+      },
+      "physical": {
+        "Q_el_nrmse": 5.739706821376661e-06,
+        "hydrodynamic_residual_nrmse": 9.532419342442919e-06,
+        "Q_el_rmse": 1.7706597158273362e-08,
+        "hydrodynamic_residual_rmse": 1.3088219102949224e-06
+      }
+    },
+    "waveform_ood": {
+      "gru": {
+        "Q_el_nrmse": 0.03545738384127617,
+        "hydrodynamic_residual_nrmse": 0.05154541879892349,
+        "Q_el_rmse": 4.1795283323153853e-05,
+        "hydrodynamic_residual_rmse": 0.0012237547198310494
+      },
+      "baseline": {
+        "Q_el_nrmse": 0.08138002364246592,
+        "hydrodynamic_residual_nrmse": 0.27558825201379655,
+        "Q_el_rmse": 9.59264527550497e-05,
+        "hydrodynamic_residual_rmse": 0.006542820604283115
+      },
+      "physical": {
+        "Q_el_nrmse": 1.9858288255788463e-05,
+        "hydrodynamic_residual_nrmse": 4.7457265009236604e-05,
+        "Q_el_rmse": 2.340789624901279e-08,
+        "hydrodynamic_residual_rmse": 1.126696689922083e-06
+      }
+    },
+    "amplitude_ood": {
+      "gru": {
+        "Q_el_nrmse": 0.019074710085988045,
+        "hydrodynamic_residual_nrmse": 0.02530129812657833,
+        "Q_el_rmse": 7.860390178393573e-05,
+        "hydrodynamic_residual_rmse": 0.01175430603325367
+      },
+      "baseline": {
+        "Q_el_nrmse": 1.1841282662456432,
+        "hydrodynamic_residual_nrmse": 1.1613987655844697,
+        "Q_el_rmse": 0.0048796078027627315,
+        "hydrodynamic_residual_rmse": 0.539554780862469
+      },
+      "physical": {
+        "Q_el_nrmse": 2.6356443858823688e-05,
+        "hydrodynamic_residual_nrmse": 3.0312403992392162e-05,
+        "Q_el_rmse": 1.0861079223651811e-07,
+        "hydrodynamic_residual_rmse": 1.4082331562750617e-05
+      }
+    }
+  },
+  "prefix_0_12": {
+    "test": {
+      "gru": {
+        "Q_el_nrmse": 0.011146859265863895,
+        "hydrodynamic_residual_nrmse": 0.01277254894375801,
+        "Q_el_rmse": 4.79331320093479e-05,
+        "hydrodynamic_residual_rmse": 0.002383346203714609
+      },
+      "baseline": {
+        "Q_el_nrmse": 0.0780978607030361,
+        "hydrodynamic_residual_nrmse": 0.17047916069421548,
+        "Q_el_rmse": 0.00033583226808015415,
+        "hydrodynamic_residual_rmse": 0.03181125890838983
+      },
+      "physical": {
+        "Q_el_nrmse": 1.186377194823158e-05,
+        "hydrodynamic_residual_nrmse": 2.0164309674280365e-05,
+        "Q_el_rmse": 5.101596132716387e-08,
+        "hydrodynamic_residual_rmse": 3.7626421501924226e-06
+      }
+    },
+    "waveform_ood": {
+      "gru": {
+        "Q_el_nrmse": 0.035456426441669464,
+        "hydrodynamic_residual_nrmse": 0.051545415073633194,
+        "Q_el_rmse": 0.00012042885646224022,
+        "hydrodynamic_residual_rmse": 0.0035262200981378555
+      },
+      "baseline": {
+        "Q_el_nrmse": 0.08126841507990255,
+        "hydrodynamic_residual_nrmse": 0.2755882334930734,
+        "Q_el_rmse": 0.0002760306993735646,
+        "hydrodynamic_residual_rmse": 0.018852981253964497
+      },
+      "physical": {
+        "Q_el_nrmse": 1.9858278633049422e-05,
+        "hydrodynamic_residual_nrmse": 4.745726181990302e-05,
+        "Q_el_rmse": 6.744926099575559e-08,
+        "hydrodynamic_residual_rmse": 3.246549593626262e-06
+      }
+    },
+    "amplitude_ood": {
+      "gru": {
+        "Q_el_nrmse": 0.02635084092617035,
+        "hydrodynamic_residual_nrmse": 0.038168493658304214,
+        "Q_el_rmse": 0.0001536611671326682,
+        "hydrodynamic_residual_rmse": 0.025470687076449394
+      },
+      "baseline": {
+        "Q_el_nrmse": 1.101664787955165,
+        "hydrodynamic_residual_nrmse": 1.0457744467897372,
+        "Q_el_rmse": 0.006424200773880265,
+        "hydrodynamic_residual_rmse": 0.6978685861297254
+      },
+      "physical": {
+        "Q_el_nrmse": 5.366516703851959e-05,
+        "hydrodynamic_residual_nrmse": 6.077661927099803e-05,
+        "Q_el_rmse": 3.129407523854724e-07,
+        "hydrodynamic_residual_rmse": 4.055759202244475e-05
+      }
+    }
+  },
+  "step": {
+    "field": 3.0,
+    "elapsed_horizon": 1000.0,
+    "stationary_latent": [
+      -0.006437420717836521,
+      0.06423880693583738
+    ],
+    "late_interval": [
+      100.0,
+      1000.0
+    ],
+    "quadrature_relative_difference": [
+      4.993782356338866e-09,
+      5.129757333913693e-10
+    ],
+    "reference_final_gamma_departure": [
+      -2.72111723316019e-09,
+      5.06393162194585e-07
+    ],
+    "reference_slopes": [
+      -1.5019083130410562,
+      -1.5036817395161644
+    ],
+    "models": {
+      "gru": {
+        "final_gamma_departure": [
+          -2.66145187579851e-06,
+          3.911766142596085e-05
+        ],
+        "tail_relative_rmse": [
+          379.092906989774,
+          29.264687016581703
+        ],
+        "slopes": [
+          2.370426960559824e-16,
+          -7.002236003892918e-17
+        ]
+      },
+      "physical": {
+        "final_gamma_departure": [
+          -2.7910284867404176e-09,
+          5.140628419331161e-07
+        ],
+        "tail_relative_rmse": [
+          0.015574164782863414,
+          0.008768258790154288
+        ],
+        "slopes": [
+          -1.484246951062405,
+          -1.5075468012157742
+        ]
+      }
+    }
+  },
+  "switch_off": {
+    "gru": {
+      "relative_rmse_above_floor": 411.3441000548324,
+      "wrong_sign_samples": 231,
+      "reference_floor": 1e-12,
+      "scored_samples": 325
+    },
+    "physical": {
+      "relative_rmse_above_floor": 0.00016274362667157715,
+      "wrong_sign_samples": 0,
+      "reference_floor": 1e-12,
+      "scored_samples": 325
+    }
+  },
+  "physical_tails": {
+    "learned": {
+      "rows": [
+        {
+          "field": 0.4,
+          "on_tail_relative_rmse": [
+            0.0011223613485374523,
+            0.0010989432176278474
+          ],
+          "off_scaled_relative_rmse": 0.0014448335236298844
+        },
+        {
+          "field": 1.2,
+          "on_tail_relative_rmse": [
+            0.00907069713544575,
+            0.006458298724949791
+          ],
+          "off_scaled_relative_rmse": 0.002025280215591343
+        },
+        {
+          "field": 2.2,
+          "on_tail_relative_rmse": [
+            0.009134123223407332,
+            0.006281000313510483
+          ],
+          "off_scaled_relative_rmse": 0.0021166724309346656
+        },
+        {
+          "field": 3.0,
+          "on_tail_relative_rmse": [
+            0.01116901321323547,
+            0.006395936741931377
+          ],
+          "off_scaled_relative_rmse": 0.0017190142795631125
+        },
+        {
+          "field": 4.8,
+          "on_tail_relative_rmse": [
+            0.007691108024571163,
+            0.004980484053055638
+          ],
+          "off_scaled_relative_rmse": 0.0016867366868436662
+        }
+      ],
+      "worst_tail_relative_rmse": 0.01116901321323547
+    },
+    "ordinary_weights": {
+      "rows": [
+        {
+          "field": 0.4,
+          "on_tail_relative_rmse": [
+            0.0021345064087579324,
+            0.002133284602597448
+          ],
+          "off_scaled_relative_rmse": 0.002066778764590711
+        },
+        {
+          "field": 1.2,
+          "on_tail_relative_rmse": [
+            0.006169173794802375,
+            0.004537201224510569
+          ],
+          "off_scaled_relative_rmse": 0.002066253590602095
+        },
+        {
+          "field": 2.2,
+          "on_tail_relative_rmse": [
+            0.013293955771825313,
+            0.005526059323762601
+          ],
+          "off_scaled_relative_rmse": 0.0020658772728094446
+        },
+        {
+          "field": 3.0,
+          "on_tail_relative_rmse": [
+            0.016916244115997434,
+            0.011980204724099199
+          ],
+          "off_scaled_relative_rmse": 0.0020657256131040376
+        },
+        {
+          "field": 4.8,
+          "on_tail_relative_rmse": [
+            0.03904320210583809,
+            0.014900352569554803
+          ],
+          "off_scaled_relative_rmse": 0.002065563398372895
+        }
+      ],
+      "worst_tail_relative_rmse": 0.03904320210583809
+    }
+  },
+  "timing": {
+    "history_index": 900,
+    "median_seconds": {
+      "gru": 0.038473614025861025,
+      "baseline": 0.010943527042400092,
+      "physical": 0.05444601702038199,
+      "reference": 0.6384510119678453
+    },
+    "speedup_vs_reference": {
+      "gru": 16.594516219315764,
+      "baseline": 58.340515767375734,
+      "physical": 11.726312536853516
+    },
+    "scope": "Five warmed CPU calls per model; one identical 2001-sample history; includes input preparation; excludes loading, training, and data generation"
+  },
+  "artifact_hashes": {
+    "dataset.npz": "6efc5e9edc34b4979cddcbd7158c792d8a0dbfcdf3d2305515716c19db9f7280",
+    "gru.pt": "8a8e48ff95c72a1f1070c7f40d0747b5e05b9ab90d7df609988369e32717b7f6",
+    "baseline.npz": "8d36efe04ca16ea629fd5cbd87466138a25661c32b5793d0ecb6fa913c5b962b",
+    "covariance_weights.npz": "8017263fbf044a9ccc45ac6e63c1a893dd49445941536a2c21ec0ea9505dd8dd"
+  }
+}
