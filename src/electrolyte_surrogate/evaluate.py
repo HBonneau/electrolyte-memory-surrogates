@@ -12,10 +12,11 @@ import numpy as np
 import torch
 
 from .baseline import load_baseline, predict_baseline
-from .data import DT, current_coefficients, load_dataset, split_arrays
+from .data import DT, load_dataset
 from .model import load_gru, predict
 from .physics import reference_coefficients, stationary_coefficients
 from .reduction import CovarianceModes, FIT_TIMES, TEST_FIELDS
+from .metrics import metrics, ordinary_tests, timing_tests
 
 COLORS = {"gru": "#d56b24", "physical": "#8543a1", "baseline": "#687986"}
 LABELS = {"gru": "GRU trained through 100 Debye times",
@@ -27,6 +28,8 @@ def load_predictors(artifacts):
     gru, scale, metadata = load_gru(artifacts / "gru.pt")
     if metadata["training_tmax"] != 100:
         raise ValueError("Use a GRU trained on complete 100-time histories.")
+    if not np.isclose(metadata["dt"], DT):
+        raise ValueError("The GRU checkpoint must use dt=0.05.")
     baseline = load_baseline(artifacts / "baseline.npz")
     physical = CovarianceModes.load(artifacts / "covariance_weights.npz")
 
@@ -44,28 +47,34 @@ def load_predictors(artifacts):
     return dict(gru=predict_gru, baseline=predict_regression, physical=predict_physical)
 
 
-def metrics(truth, estimate, field):
-    """NRMSE of interactions, excluding the known hydrodynamic baseline -f."""
-    actual = np.stack([truth[..., 0], field * truth[..., 1]], axis=-1)
-    predicted = np.stack([estimate[..., 0], field * estimate[..., 1]], axis=-1)
-    axes = tuple(range(actual.ndim - 1))
-    rmse = np.sqrt(np.mean((predicted - actual)**2, axis=axes))
-    rms = np.sqrt(np.mean(actual**2, axis=axes))
-    return dict(Q_el_nrmse=float(rmse[0] / rms[0]),
-                hydrodynamic_residual_nrmse=float(rmse[1] / rms[1]),
-                Q_el_rmse=float(rmse[0]), hydrodynamic_residual_rmse=float(rmse[1]))
-
-
-def ordinary_tests(data, predictors):
-    results, prefix = {}, {}
-    for name in ["test", "waveform_ood", "amplitude_ood"]:
-        field, truth = split_arrays(data, name)
-        results[name], prefix[name] = {}, {}
-        for key, run in predictors.items():
-            estimate = run(data["tau"], field)
-            results[name][key] = metrics(truth, estimate, field)
-            prefix[name][key] = metrics(truth[:, :241], estimate[:, :241], field[:, :241])
-    return results, prefix
+def plot_accuracy(report, output):
+    """Keep the data-matched comparison separate from the physical reduction."""
+    conditions = [
+        ("Standard whole history", lambda name: report["ordinary"]["test"][name]),
+        (r"After change (<1 $t_D$)", lambda name: report["regimes"]["test"][name]["recent_change"]),
+        (r"Long hold ($\geq8\,t_D$)", lambda name: report["regimes"]["test"][name]["long_hold"]),
+        ("Unseen waveforms", lambda name: report["ordinary"]["waveform_ood"][name]),
+        ("Larger amplitudes", lambda name: report["ordinary"]["amplitude_ood"][name]),
+        ("Late field changes", lambda name: report["timing_probes"][name]["overall"]),
+    ]
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4), layout="constrained", sharey=True)
+    positions = np.arange(len(conditions))
+    for ax, key, title in zip(axes, ["Q_el_nrmse", "hydrodynamic_residual_nrmse"],
+                              ["Electrostatic current", "Hydrodynamic residual"]):
+        values = {name: np.array([100 * getter(name)[key] for _, getter in conditions])
+                  for name in ["baseline", "gru"]}
+        ax.hlines(positions, np.minimum(values["baseline"], values["gru"]),
+                  np.maximum(values["baseline"], values["gru"]), color=".8", zorder=1)
+        for name in ["baseline", "gru"]:
+            ax.scatter(values[name], positions, color=COLORS[name], label=LABELS[name], s=35, zorder=2)
+        ax.set(xscale="log", xlabel="NRMSE (%) — logarithmic scale", title=title)
+        ax.set_yticks(positions, [label for label, _ in conditions])
+        ax.grid(axis="x", alpha=.2)
+    axes[0].invert_yaxis()
+    fig.legend(*axes[1].get_legend_handles_labels(), loc="outside lower center", ncol=2, fontsize=8)
+    fig.suptitle("Regression and GRU: same training data, different evaluation conditions")
+    fig.savefig(output / "accuracy_by_regime.png", dpi=180)
+    plt.close(fig)
 
 
 def step_test(predictors, output):
@@ -208,19 +217,28 @@ def main():
     parser.add_argument("--data", type=Path, default=Path("data/dataset.npz"))
     parser.add_argument("--artifacts", type=Path, default=Path("artifacts"))
     parser.add_argument("--output", type=Path, default=Path("results/reproduced"))
+    parser.add_argument("--timing-data", type=Path, default=Path("data/timing_probe.npz"))
+    parser.add_argument("--ablation", type=Path, help="Optional directory produced by electrolyte_surrogate.ablate")
     args = parser.parse_args()
     torch.set_num_threads(2)
     args.output.mkdir(parents=True, exist_ok=True)
     data, predictors = load_dataset(args.data), load_predictors(args.artifacts)
-    ordinary, prefix = ordinary_tests(data, predictors)
-    report = dict(data_horizon=100, ordinary=ordinary, prefix_0_12=prefix)
+    ordinary, prefix, regimes = ordinary_tests(data, predictors)
+    with np.load(args.timing_data, allow_pickle=False) as archive:
+        probes = {key: archive[key] for key in archive.files}
+    report = dict(data_horizon=100, ordinary=ordinary, prefix_0_12=prefix, regimes=regimes,
+                  timing_probes=timing_tests(probes, predictors))
     print("Ordinary test histories evaluated.", flush=True)
     report["step"] = step_test(predictors, args.output)
     report["switch_off"] = switch_off_test(predictors, args.output)
     report["physical_tails"] = physical_tail_tests(args.artifacts)
     report["timing"] = benchmark(data, predictors)
+    plot_accuracy(report, args.output)
+    if args.ablation:
+        from .ablation_results import evaluate_study
+        report["loss_ablation"] = evaluate_study(args.ablation, data, probes, args.output)
     report["artifact_hashes"] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
-                                for path in [args.data, *args.artifacts.glob("*.pt"), *args.artifacts.glob("*.npz")]}
+                                for path in [args.data, args.timing_data, *args.artifacts.glob("*.pt"), *args.artifacts.glob("*.npz")]}
     (args.output / "metrics.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({"standard_test": report["ordinary"]["test"],
                       "reference_slopes": report["step"]["reference_slopes"],

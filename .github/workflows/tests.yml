@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      MPLBACKEND: Agg
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install CPU dependencies and package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.2.2 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e .
+          python -m pip check
+      - name: Check supplied data and model hashes
+        run: awk '$2 ~ "^(data|artifacts)/"' MANIFEST.sha256 | sha256sum --check
+      - name: Test physical solutions, data separation, losses, and saved-model inference
+        run: python -m unittest discover -s tests -v
+      - name: Exercise the custom-field command
+        run: python -m electrolyte_surrogate.demo --input data/example_field.csv --output runs/ci-demo

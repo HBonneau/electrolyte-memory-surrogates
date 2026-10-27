@@ -10,7 +10,8 @@ import numpy as np
 import torch
 
 from .data import DT, current_coefficients, load_field
-from .evaluate import COLORS, LABELS, load_predictors, metrics
+from .evaluate import COLORS, LABELS, load_predictors
+from .metrics import metrics
 from .physics import reference_coefficients
 
 

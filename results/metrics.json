@@ -3,124 +3,596 @@
   "ordinary": {
     "test": {
       "gru": {
-        "Q_el_nrmse": 0.005554099101573229,
-        "hydrodynamic_residual_nrmse": 0.00618400052189827,
-        "Q_el_rmse": 1.7134010704467073e-05,
-        "hydrodynamic_residual_rmse": 0.0008490767213515937
+        "Q_el_nrmse": 0.005554216995708471,
+        "hydrodynamic_residual_nrmse": 0.00618357014191898,
+        "Q_el_rmse": 1.7134091384709837e-05,
+        "hydrodynamic_residual_rmse": 0.0008491109969099102
       },
       "baseline": {
-        "Q_el_nrmse": 0.06380737601510915,
-        "hydrodynamic_residual_nrmse": 0.18102580426128567,
+        "Q_el_nrmse": 0.06380842817945166,
+        "hydrodynamic_residual_nrmse": 0.18100589925653948,
         "Q_el_rmse": 0.0001968413262186496,
-        "hydrodynamic_residual_rmse": 0.024855236685927342
+        "hydrodynamic_residual_rmse": 0.024855236705797
       },
       "physical": {
-        "Q_el_nrmse": 5.739706821376661e-06,
-        "hydrodynamic_residual_nrmse": 9.532419342442919e-06,
+        "Q_el_nrmse": 5.739801467407121e-06,
+        "hydrodynamic_residual_nrmse": 9.531217747140574e-06,
         "Q_el_rmse": 1.7706597158273362e-08,
-        "hydrodynamic_residual_rmse": 1.3088219102949224e-06
+        "hydrodynamic_residual_rmse": 1.3088008411477965e-06
       }
     },
     "waveform_ood": {
       "gru": {
-        "Q_el_nrmse": 0.03545738384127617,
-        "hydrodynamic_residual_nrmse": 0.05154541879892349,
-        "Q_el_rmse": 4.1795283323153853e-05,
-        "hydrodynamic_residual_rmse": 0.0012237547198310494
+        "Q_el_nrmse": 0.03545746963195523,
+        "hydrodynamic_residual_nrmse": 0.051545344400430855,
+        "Q_el_rmse": 4.179542769408191e-05,
+        "hydrodynamic_residual_rmse": 0.0012237553273532636
       },
       "baseline": {
-        "Q_el_nrmse": 0.08138002364246592,
-        "hydrodynamic_residual_nrmse": 0.27558825201379655,
+        "Q_el_nrmse": 0.08137993730699343,
+        "hydrodynamic_residual_nrmse": 0.2755877204054097,
         "Q_el_rmse": 9.59264527550497e-05,
-        "hydrodynamic_residual_rmse": 0.006542820604283115
+        "hydrodynamic_residual_rmse": 0.0065428205965472755
       },
       "physical": {
-        "Q_el_nrmse": 1.9858288255788463e-05,
-        "hydrodynamic_residual_nrmse": 4.7457265009236604e-05,
+        "Q_el_nrmse": 1.9858267188275545e-05,
+        "hydrodynamic_residual_nrmse": 4.745683699080776e-05,
         "Q_el_rmse": 2.340789624901279e-08,
-        "hydrodynamic_residual_rmse": 1.126696689922083e-06
+        "hydrodynamic_residual_rmse": 1.1266887002573015e-06
       }
     },
     "amplitude_ood": {
       "gru": {
-        "Q_el_nrmse": 0.019074710085988045,
-        "hydrodynamic_residual_nrmse": 0.02530129812657833,
-        "Q_el_rmse": 7.860390178393573e-05,
-        "hydrodynamic_residual_rmse": 0.01175430603325367
+        "Q_el_nrmse": 0.019075084742544303,
+        "hydrodynamic_residual_nrmse": 0.025301179437939077,
+        "Q_el_rmse": 7.860466903838243e-05,
+        "hydrodynamic_residual_rmse": 0.011754317410193402
       },
       "baseline": {
-        "Q_el_nrmse": 1.1841282662456432,
-        "hydrodynamic_residual_nrmse": 1.1613987655844697,
+        "Q_el_nrmse": 1.184139994312925,
+        "hydrodynamic_residual_nrmse": 1.161392180003392,
         "Q_el_rmse": 0.0048796078027627315,
-        "hydrodynamic_residual_rmse": 0.539554780862469
+        "hydrodynamic_residual_rmse": 0.5395547806362785
       },
       "physical": {
-        "Q_el_nrmse": 2.6356443858823688e-05,
-        "hydrodynamic_residual_nrmse": 3.0312403992392162e-05,
+        "Q_el_nrmse": 2.6356704903303157e-05,
+        "hydrodynamic_residual_nrmse": 3.031167490730104e-05,
         "Q_el_rmse": 1.0861079223651811e-07,
-        "hydrodynamic_residual_rmse": 1.4082331562750617e-05
+        "hydrodynamic_residual_rmse": 1.4082072694237735e-05
       }
     }
   },
   "prefix_0_12": {
     "test": {
       "gru": {
-        "Q_el_nrmse": 0.011146859265863895,
-        "hydrodynamic_residual_nrmse": 0.01277254894375801,
-        "Q_el_rmse": 4.79331320093479e-05,
-        "hydrodynamic_residual_rmse": 0.002383346203714609
+        "Q_el_nrmse": 0.011146858563864187,
+        "hydrodynamic_residual_nrmse": 0.012772563941739846,
+        "Q_el_rmse": 4.793335996656466e-05,
+        "hydrodynamic_residual_rmse": 0.0023833510464928865
       },
       "baseline": {
-        "Q_el_nrmse": 0.0780978607030361,
-        "hydrodynamic_residual_nrmse": 0.17047916069421548,
+        "Q_el_nrmse": 0.07809748359143644,
+        "hydrodynamic_residual_nrmse": 0.17047901507553898,
         "Q_el_rmse": 0.00033583226808015415,
-        "hydrodynamic_residual_rmse": 0.03181125890838983
+        "hydrodynamic_residual_rmse": 0.03181125894837491
       },
       "physical": {
-        "Q_el_nrmse": 1.186377194823158e-05,
-        "hydrodynamic_residual_nrmse": 2.0164309674280365e-05,
+        "Q_el_nrmse": 1.1863714661566143e-05,
+        "hydrodynamic_residual_nrmse": 2.0164008568445953e-05,
         "Q_el_rmse": 5.101596132716387e-08,
-        "hydrodynamic_residual_rmse": 3.7626421501924226e-06
+        "hydrodynamic_residual_rmse": 3.762589182744061e-06
       }
     },
     "waveform_ood": {
       "gru": {
-        "Q_el_nrmse": 0.035456426441669464,
-        "hydrodynamic_residual_nrmse": 0.051545415073633194,
-        "Q_el_rmse": 0.00012042885646224022,
-        "hydrodynamic_residual_rmse": 0.0035262200981378555
+        "Q_el_nrmse": 0.03545643438557243,
+        "hydrodynamic_residual_nrmse": 0.05154534440043085,
+        "Q_el_rmse": 0.00012042900820698396,
+        "hydrodynamic_residual_rmse": 0.003526221738515504
       },
       "baseline": {
-        "Q_el_nrmse": 0.08126841507990255,
-        "hydrodynamic_residual_nrmse": 0.2755882334930734,
+        "Q_el_nrmse": 0.08126833000169878,
+        "hydrodynamic_residual_nrmse": 0.2755877204054096,
         "Q_el_rmse": 0.0002760306993735646,
-        "hydrodynamic_residual_rmse": 0.018852981253964497
+        "hydrodynamic_residual_rmse": 0.01885298123167386
       },
       "physical": {
-        "Q_el_nrmse": 1.9858278633049422e-05,
-        "hydrodynamic_residual_nrmse": 4.745726181990302e-05,
+        "Q_el_nrmse": 1.9858257843832916e-05,
+        "hydrodynamic_residual_nrmse": 4.745683699080775e-05,
         "Q_el_rmse": 6.744926099575559e-08,
-        "hydrodynamic_residual_rmse": 3.246549593626262e-06
+        "hydrodynamic_residual_rmse": 3.2465265715980786e-06
       }
     },
     "amplitude_ood": {
       "gru": {
-        "Q_el_nrmse": 0.02635084092617035,
-        "hydrodynamic_residual_nrmse": 0.038168493658304214,
-        "Q_el_rmse": 0.0001536611671326682,
-        "hydrodynamic_residual_rmse": 0.025470687076449394
+        "Q_el_nrmse": 0.026350819410038393,
+        "hydrodynamic_residual_nrmse": 0.03816848073535267,
+        "Q_el_rmse": 0.00015366133281185677,
+        "hydrodynamic_residual_rmse": 0.025470678810413493
       },
       "baseline": {
-        "Q_el_nrmse": 1.101664787955165,
-        "hydrodynamic_residual_nrmse": 1.0457744467897372,
+        "Q_el_nrmse": 1.101662671725086,
+        "hydrodynamic_residual_nrmse": 1.0457743930309085,
         "Q_el_rmse": 0.006424200773880265,
-        "hydrodynamic_residual_rmse": 0.6978685861297254
+        "hydrodynamic_residual_rmse": 0.6978685858034132
       },
       "physical": {
-        "Q_el_nrmse": 5.366516703851959e-05,
-        "hydrodynamic_residual_nrmse": 6.077661927099803e-05,
+        "Q_el_nrmse": 5.366506395104513e-05,
+        "hydrodynamic_residual_nrmse": 6.077551585789364e-05,
         "Q_el_rmse": 3.129407523854724e-07,
-        "hydrodynamic_residual_rmse": 4.055759202244475e-05
+        "hydrodynamic_residual_rmse": 4.055685775619063e-05
+      }
+    }
+  },
+  "regimes": {
+    "test": {
+      "gru": {
+        "recent_change": {
+          "samples": 8032,
+          "Q_el_nrmse": 0.017628237744499627,
+          "hydrodynamic_residual_nrmse": 0.02189843835655825,
+          "Q_el_rmse": 8.75327443055218e-05,
+          "hydrodynamic_residual_rmse": 0.004132430212566383
+        },
+        "relaxing": {
+          "samples": 22753,
+          "Q_el_nrmse": 0.005528686165895107,
+          "hydrodynamic_residual_nrmse": 0.007367693047884321,
+          "Q_el_rmse": 2.0176954202696734e-05,
+          "hydrodynamic_residual_rmse": 0.0012421445045309519
+        },
+        "long_hold": {
+          "samples": 223409,
+          "Q_el_nrmse": 0.0015055868405975973,
+          "hydrodynamic_residual_nrmse": 0.0017836388939907123,
+          "Q_el_rmse": 4.4324934720781265e-06,
+          "hydrodynamic_residual_rmse": 0.00023556509362085244
+        },
+        "long_hold_field_off": {
+          "samples": 175958,
+          "Q_el_nrmse": 44.90644007873031,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 5.340187582696256e-08,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "baseline": {
+        "recent_change": {
+          "samples": 8032,
+          "Q_el_nrmse": 0.09817989720395903,
+          "hydrodynamic_residual_nrmse": 0.1908063702492626,
+          "Q_el_rmse": 0.0004875107746137615,
+          "hydrodynamic_residual_rmse": 0.03600686023037977
+        },
+        "relaxing": {
+          "samples": 22753,
+          "Q_el_nrmse": 0.06651034152839325,
+          "hydrodynamic_residual_nrmse": 0.1578562701158845,
+          "Q_el_rmse": 0.00024272966031285663,
+          "hydrodynamic_residual_rmse": 0.026613527077720092
+        },
+        "long_hold": {
+          "samples": 223409,
+          "Q_el_nrmse": 0.058710946802101704,
+          "hydrodynamic_residual_nrmse": 0.1838411555725209,
+          "Q_el_rmse": 0.0001728468138952046,
+          "hydrodynamic_residual_rmse": 0.024279891613549938
+        },
+        "long_hold_field_off": {
+          "samples": 175958,
+          "Q_el_nrmse": 1.0,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 1.1891807886204737e-09,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "physical": {
+        "recent_change": {
+          "samples": 8032,
+          "Q_el_nrmse": 1.8772636866665842e-05,
+          "hydrodynamic_residual_nrmse": 3.3948246451623385e-05,
+          "Q_el_rmse": 9.321524060469355e-08,
+          "hydrodynamic_residual_rmse": 6.406336242617211e-06
+        },
+        "relaxing": {
+          "samples": 22753,
+          "Q_el_nrmse": 5.882741256519525e-06,
+          "hydrodynamic_residual_nrmse": 1.2697136927328246e-05,
+          "Q_el_rmse": 2.1469079155063953e-08,
+          "hydrodynamic_residual_rmse": 2.1406536286262267e-06
+        },
+        "long_hold": {
+          "samples": 223409,
+          "Q_el_nrmse": 1.1162045552499375e-07,
+          "hydrodynamic_residual_nrmse": 1.1134513778742014e-06,
+          "Q_el_rmse": 3.286140175538083e-10,
+          "hydrodynamic_residual_rmse": 1.47053464103575e-07
+        },
+        "long_hold_field_off": {
+          "samples": 175958,
+          "Q_el_nrmse": 5.358490367021803e-05,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 6.372213800470199e-14,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      }
+    },
+    "waveform_ood": {
+      "gru": {
+        "recent_change": {
+          "samples": 5894,
+          "Q_el_nrmse": 0.03544540989716793,
+          "hydrodynamic_residual_nrmse": 0.05154534440043085,
+          "Q_el_rmse": 0.00013771170083544049,
+          "hydrodynamic_residual_rmse": 0.004033555742560886
+        },
+        "relaxing": {
+          "samples": 4480,
+          "Q_el_nrmse": 0.22792312960929584,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 4.171465773679729e-06,
+          "hydrodynamic_residual_rmse": 0.0
+        },
+        "long_hold": {
+          "samples": 53152,
+          "Q_el_nrmse": 14.906159932810686,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 7.663619611176718e-09,
+          "hydrodynamic_residual_rmse": 0.0
+        },
+        "long_hold_field_off": {
+          "samples": 53152,
+          "Q_el_nrmse": 14.906159932810686,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 7.663619611176718e-09,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "baseline": {
+        "recent_change": {
+          "samples": 5894,
+          "Q_el_nrmse": 0.08108883425189956,
+          "hydrodynamic_residual_nrmse": 0.2755877204054097,
+          "Q_el_rmse": 0.00031504449563395906,
+          "hydrodynamic_residual_rmse": 0.02156544776546711
+        },
+        "relaxing": {
+          "samples": 4480,
+          "Q_el_nrmse": 1.6764755402219707,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 3.068297784623768e-05,
+          "hydrodynamic_residual_rmse": 0.0
+        },
+        "long_hold": {
+          "samples": 53152,
+          "Q_el_nrmse": 1.0,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 5.141243382413968e-10,
+          "hydrodynamic_residual_rmse": 0.0
+        },
+        "long_hold_field_off": {
+          "samples": 53152,
+          "Q_el_nrmse": 1.0,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 5.141243382413968e-10,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "physical": {
+        "recent_change": {
+          "samples": 5894,
+          "Q_el_nrmse": 1.9856437922956705e-05,
+          "hydrodynamic_residual_nrmse": 4.745683699080776e-05,
+          "Q_el_rmse": 7.714578126862602e-08,
+          "hydrodynamic_residual_rmse": 3.713619524607319e-06
+        },
+        "relaxing": {
+          "samples": 4480,
+          "Q_el_nrmse": 6.85668592594668e-05,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 1.2549156687163846e-09,
+          "hydrodynamic_residual_rmse": 0.0
+        },
+        "long_hold": {
+          "samples": 53152,
+          "Q_el_nrmse": 5.671722663069455e-05,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 2.9159706608393166e-14,
+          "hydrodynamic_residual_rmse": 0.0
+        },
+        "long_hold_field_off": {
+          "samples": 53152,
+          "Q_el_nrmse": 5.671722663069455e-05,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 2.9159706608393166e-14,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      }
+    },
+    "amplitude_ood": {
+      "gru": {
+        "recent_change": {
+          "samples": 1964,
+          "Q_el_nrmse": 0.04179226360443891,
+          "hydrodynamic_residual_nrmse": 0.05759980653043269,
+          "Q_el_rmse": 0.0002858318568161245,
+          "hydrodynamic_residual_rmse": 0.042157166865644684
+        },
+        "relaxing": {
+          "samples": 5634,
+          "Q_el_nrmse": 0.009833462434979245,
+          "hydrodynamic_residual_nrmse": 0.026442949520839996,
+          "Q_el_rmse": 4.872286765424993e-05,
+          "hydrodynamic_residual_rmse": 0.01564292876185486
+        },
+        "long_hold": {
+          "samples": 56007,
+          "Q_el_nrmse": 0.01608625006139411,
+          "hydrodynamic_residual_nrmse": 0.01919476875569506,
+          "Q_el_rmse": 6.29304112564648e-05,
+          "hydrodynamic_residual_rmse": 0.00842752581207644
+        },
+        "long_hold_field_off": {
+          "samples": 43209,
+          "Q_el_nrmse": 107.5403854270077,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 1.1480769019129533e-07,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "baseline": {
+        "recent_change": {
+          "samples": 1964,
+          "Q_el_nrmse": 0.9542517848203269,
+          "hydrodynamic_residual_nrmse": 0.9310565212190551,
+          "Q_el_rmse": 0.006526460545590657,
+          "hydrodynamic_residual_rmse": 0.6814381417347359
+        },
+        "relaxing": {
+          "samples": 5634,
+          "Q_el_nrmse": 1.1606303306557315,
+          "hydrodynamic_residual_nrmse": 1.0694915782113648,
+          "Q_el_rmse": 0.005750694464941728,
+          "hydrodynamic_residual_rmse": 0.6326820900285353
+        },
+        "long_hold": {
+          "samples": 56007,
+          "Q_el_nrmse": 1.209864457359322,
+          "hydrodynamic_residual_nrmse": 1.1971795805943355,
+          "Q_el_rmse": 0.004733065044719525,
+          "hydrodynamic_residual_rmse": 0.5256255985973335
+        },
+        "long_hold_field_off": {
+          "samples": 43209,
+          "Q_el_nrmse": 1.0,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 1.0675774476298512e-09,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "physical": {
+        "recent_change": {
+          "samples": 1964,
+          "Q_el_nrmse": 6.025464902162771e-05,
+          "hydrodynamic_residual_nrmse": 7.660566921191547e-05,
+          "Q_el_rmse": 4.121025454535667e-07,
+          "hydrodynamic_residual_rmse": 5.606751436074382e-05
+        },
+        "relaxing": {
+          "samples": 5634,
+          "Q_el_nrmse": 5.52163205629186e-05,
+          "hydrodynamic_residual_nrmse": 5.74486131220045e-05,
+          "Q_el_rmse": 2.7358598224485927e-07,
+          "hydrodynamic_residual_rmse": 3.3985034907948853e-05
+        },
+        "long_hold": {
+          "samples": 56007,
+          "Q_el_nrmse": 3.361632591347598e-07,
+          "hydrodynamic_residual_nrmse": 1.2442785140153987e-06,
+          "Q_el_rmse": 1.3150915885259217e-09,
+          "hydrodynamic_residual_rmse": 5.46304538895039e-07
+        },
+        "long_hold_field_off": {
+          "samples": 43209,
+          "Q_el_nrmse": 0.0003890709496620976,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 4.1536337138718446e-13,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      }
+    }
+  },
+  "timing_probes": {
+    "gru": {
+      "overall": {
+        "Q_el_nrmse": 0.004773187468987858,
+        "hydrodynamic_residual_nrmse": 0.010794201362913435,
+        "Q_el_rmse": 2.062730802051054e-05,
+        "hydrodynamic_residual_rmse": 0.0020850666738821784
+      },
+      "regimes": {
+        "recent_change": {
+          "samples": 2059,
+          "Q_el_nrmse": 0.0161902745974514,
+          "hydrodynamic_residual_nrmse": 0.030306794690643617,
+          "Q_el_rmse": 8.327931979101028e-05,
+          "hydrodynamic_residual_rmse": 0.005928430767071184
+        },
+        "relaxing": {
+          "samples": 13172,
+          "Q_el_nrmse": 0.005425602927831283,
+          "hydrodynamic_residual_nrmse": 0.017711313697370352,
+          "Q_el_rmse": 2.7546905765310378e-05,
+          "hydrodynamic_residual_rmse": 0.0038977573025658634
+        },
+        "long_hold": {
+          "samples": 32626,
+          "Q_el_nrmse": 0.0019244011638651554,
+          "hydrodynamic_residual_nrmse": 0.001877784797603513,
+          "Q_el_rmse": 9.539916141891317e-06,
+          "hydrodynamic_residual_rmse": 0.00042515362878052916
+        },
+        "long_hold_field_off": {
+          "samples": 10434,
+          "Q_el_nrmse": 63.483257804426536,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 1.0915651330774156e-07,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "families": {
+        "late_pulse": {
+          "Q_el_nrmse": 0.008240460871301663,
+          "hydrodynamic_residual_nrmse": 0.014661913542200792,
+          "Q_el_rmse": 1.5530580206547502e-05,
+          "hydrodynamic_residual_rmse": 0.0008779274472147233
+        },
+        "late_reversal": {
+          "Q_el_nrmse": 0.004619291556188022,
+          "hydrodynamic_residual_nrmse": 0.011510645317203519,
+          "Q_el_rmse": 2.2561289676651288e-05,
+          "hydrodynamic_residual_rmse": 0.0027356025507802592
+        },
+        "late_step": {
+          "Q_el_nrmse": 0.002976099070404964,
+          "hydrodynamic_residual_nrmse": 0.006443941788658642,
+          "Q_el_rmse": 1.4487028829300558e-05,
+          "hydrodynamic_residual_rmse": 0.0014441046889829034
+        },
+        "late_switching": {
+          "Q_el_nrmse": 0.0056067793191536715,
+          "hydrodynamic_residual_nrmse": 0.013451779654397977,
+          "Q_el_rmse": 2.7237081836447236e-05,
+          "hydrodynamic_residual_rmse": 0.002655239323862472
+        }
+      }
+    },
+    "baseline": {
+      "overall": {
+        "Q_el_nrmse": 0.07229855786263135,
+        "hydrodynamic_residual_nrmse": 0.22398544570982684,
+        "Q_el_rmse": 0.00031243789022756163,
+        "hydrodynamic_residual_rmse": 0.043266247551097425
+      },
+      "regimes": {
+        "recent_change": {
+          "samples": 2059,
+          "Q_el_nrmse": 0.09725431724529902,
+          "hydrodynamic_residual_nrmse": 0.2584315625652465,
+          "Q_el_rmse": 0.0005002554674522059,
+          "hydrodynamic_residual_rmse": 0.05055280976866486
+        },
+        "relaxing": {
+          "samples": 13172,
+          "Q_el_nrmse": 0.06617128062834067,
+          "hydrodynamic_residual_nrmse": 0.2022435545761908,
+          "Q_el_rmse": 0.0003359652477494187,
+          "hydrodynamic_residual_rmse": 0.044508064461828485
+        },
+        "long_hold": {
+          "samples": 32626,
+          "Q_el_nrmse": 0.07279345176492688,
+          "hydrodynamic_residual_nrmse": 0.2300465205061969,
+          "Q_el_rmse": 0.0003608620897533781,
+          "hydrodynamic_residual_rmse": 0.05208536841195324
+        },
+        "long_hold_field_off": {
+          "samples": 10434,
+          "Q_el_nrmse": 1.0,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 1.7194535548887716e-09,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "families": {
+        "late_pulse": {
+          "Q_el_nrmse": 0.07034111524916427,
+          "hydrodynamic_residual_nrmse": 0.2153166202569844,
+          "Q_el_rmse": 0.0001325700527260177,
+          "hydrodynamic_residual_rmse": 0.012892748973115417
+        },
+        "late_reversal": {
+          "Q_el_nrmse": 0.07813996045395007,
+          "hydrodynamic_residual_nrmse": 0.24453912283204762,
+          "Q_el_rmse": 0.0003816468957803722,
+          "hydrodynamic_residual_rmse": 0.05811679795094574
+        },
+        "late_step": {
+          "Q_el_nrmse": 0.07110801091727614,
+          "hydrodynamic_residual_nrmse": 0.22151589154597184,
+          "Q_el_rmse": 0.0003461389489337882,
+          "hydrodynamic_residual_rmse": 0.04964230717117547
+        },
+        "late_switching": {
+          "Q_el_nrmse": 0.06747026795779297,
+          "hydrodynamic_residual_nrmse": 0.19487994420610233,
+          "Q_el_rmse": 0.0003277627146150682,
+          "hydrodynamic_residual_rmse": 0.03846724408089672
+        }
+      }
+    },
+    "physical": {
+      "overall": {
+        "Q_el_nrmse": 4.318001851419317e-06,
+        "hydrodynamic_residual_nrmse": 8.710908804304089e-06,
+        "Q_el_rmse": 1.8660225436577674e-08,
+        "hydrodynamic_residual_rmse": 1.6826465466435422e-06
+      },
+      "regimes": {
+        "recent_change": {
+          "samples": 2059,
+          "Q_el_nrmse": 1.7121527783862784e-05,
+          "hydrodynamic_residual_nrmse": 3.50663588419001e-05,
+          "Q_el_rmse": 8.806948758283756e-08,
+          "hydrodynamic_residual_rmse": 6.859467745418126e-06
+        },
+        "relaxing": {
+          "samples": 13172,
+          "Q_el_nrmse": 4.3068842014707716e-06,
+          "hydrodynamic_residual_nrmse": 1.1166959754042255e-05,
+          "Q_el_rmse": 2.1866939917669682e-08,
+          "hydrodynamic_residual_rmse": 2.457530800509718e-06
+        },
+        "long_hold": {
+          "samples": 32626,
+          "Q_el_nrmse": 1.8603222212278067e-07,
+          "hydrodynamic_residual_nrmse": 1.7048897026494793e-06,
+          "Q_el_rmse": 9.222254860709404e-10,
+          "hydrodynamic_residual_rmse": 3.8600804771507724e-07
+        },
+        "long_hold_field_off": {
+          "samples": 10434,
+          "Q_el_nrmse": 0.0001794268077592649,
+          "hydrodynamic_residual_nrmse": null,
+          "Q_el_rmse": 3.0851606244401226e-13,
+          "hydrodynamic_residual_rmse": 0.0
+        }
+      },
+      "families": {
+        "late_pulse": {
+          "Q_el_nrmse": 5.738672064194472e-06,
+          "hydrodynamic_residual_nrmse": 1.4004525327992951e-05,
+          "Q_el_rmse": 1.081552453970546e-08,
+          "hydrodynamic_residual_rmse": 8.385642934853428e-07
+        },
+        "late_reversal": {
+          "Q_el_nrmse": 4.371985292695275e-06,
+          "hydrodynamic_residual_nrmse": 8.932151458031567e-06,
+          "Q_el_rmse": 2.1353410030683558e-08,
+          "hydrodynamic_residual_rmse": 2.122801601403451e-06
+        },
+        "late_step": {
+          "Q_el_nrmse": 3.0129395876060556e-06,
+          "hydrodynamic_residual_nrmse": 6.113678283321261e-06,
+          "Q_el_rmse": 1.4666360774290528e-08,
+          "hydrodynamic_residual_rmse": 1.370091749030986e-06
+        },
+        "late_switching": {
+          "Q_el_nrmse": 5.06230243275028e-06,
+          "hydrodynamic_residual_nrmse": 1.0430034075473924e-05,
+          "Q_el_rmse": 2.4592076447638444e-08,
+          "hydrodynamic_residual_rmse": 2.0587786402945922e-06
+        }
       }
     }
   },
@@ -287,20 +759,135 @@
   "timing": {
     "history_index": 900,
     "median_seconds": {
-      "gru": 0.038473614025861025,
-      "baseline": 0.010943527042400092,
-      "physical": 0.05444601702038199,
-      "reference": 0.6384510119678453
+      "gru": 0.04666690103476867,
+      "baseline": 0.012513299006968737,
+      "physical": 0.061324934009462595,
+      "reference": 0.6878226869739592
     },
     "speedup_vs_reference": {
-      "gru": 16.594516219315764,
-      "baseline": 58.340515767375734,
-      "physical": 11.726312536853516
+      "gru": 14.738983556279093,
+      "baseline": 54.96733408119684,
+      "physical": 11.216036316774941
     },
     "scope": "Five warmed CPU calls per model; one identical 2001-sample history; includes input preparation; excludes loading, training, and data generation"
   },
+  "loss_ablation": {
+    "mse": {
+      "Q_el_nrmse": {
+        "mean": 0.0067567239764438096,
+        "sample_std": 0.001822251633765778,
+        "values": [
+          0.005554216995708471,
+          0.00885333151777203,
+          0.0058626234158509274
+        ]
+      },
+      "hydrodynamic_residual_nrmse": {
+        "mean": 0.010045737304259455,
+        "sample_std": 0.005319024339637298,
+        "values": [
+          0.00618357014191898,
+          0.01611261204713723,
+          0.007841029723722154
+        ]
+      },
+      "recent_Q_el_nrmse": {
+        "mean": 0.020133385733651362,
+        "sample_std": 0.0032672683934225266,
+        "values": [
+          0.017628237744499627,
+          0.023828953366981653,
+          0.018942966089472806
+        ]
+      },
+      "timing_Q_el_nrmse": {
+        "mean": 0.006583749361428599,
+        "sample_std": 0.0027883336898730233,
+        "values": [
+          0.004773187468987858,
+          0.00979471979049612,
+          0.0051833408248018195
+        ]
+      },
+      "tail_relative_rmse_el": {
+        "mean": 2605.4458373198745,
+        "sample_std": 457.64020734412725,
+        "values": [
+          2783.357045042779,
+          2085.5665035445213,
+          2947.413963372324
+        ]
+      },
+      "tail_relative_rmse_hyd": {
+        "mean": 1493.5727737250093,
+        "sample_std": 1119.5956097919534,
+        "values": [
+          264.60711178853904,
+          2455.5133442835518,
+          1760.5978651029375
+        ]
+      }
+    },
+    "mixed": {
+      "Q_el_nrmse": {
+        "mean": 0.00715509114974702,
+        "sample_std": 0.0024433703479897514,
+        "values": [
+          0.005471477437269022,
+          0.009957546446630746,
+          0.0060362495653412925
+        ]
+      },
+      "hydrodynamic_residual_nrmse": {
+        "mean": 0.010195817904471787,
+        "sample_std": 0.0054569346990210625,
+        "values": [
+          0.006268545455111295,
+          0.016426834431017643,
+          0.007892073827286423
+        ]
+      },
+      "recent_Q_el_nrmse": {
+        "mean": 0.021719213458198012,
+        "sample_std": 0.0052088563273645664,
+        "values": [
+          0.017758620107259915,
+          0.02761964526788177,
+          0.01977937499945235
+        ]
+      },
+      "timing_Q_el_nrmse": {
+        "mean": 0.006191260057950843,
+        "sample_std": 0.0025715781212362625,
+        "values": [
+          0.004583273438788012,
+          0.009157150291084812,
+          0.004833356443979708
+        ]
+      },
+      "tail_relative_rmse_el": {
+        "mean": 1261.5915861778556,
+        "sample_std": 1409.0127230718826,
+        "values": [
+          591.764720023234,
+          2880.5672571593695,
+          312.4427813509631
+        ]
+      },
+      "tail_relative_rmse_hyd": {
+        "mean": 1182.9972577469955,
+        "sample_std": 1158.1112181654144,
+        "values": [
+          789.8431734894612,
+          272.64431421077273,
+          2486.5042855407523
+        ]
+      }
+    }
+  },
   "artifact_hashes": {
     "dataset.npz": "6efc5e9edc34b4979cddcbd7158c792d8a0dbfcdf3d2305515716c19db9f7280",
+    "timing_probe.npz": "e7a383dc2a268a6a7c3507843c32d67eaea79b9a2d2b791befaedbe6e9611de8",
     "gru.pt": "8a8e48ff95c72a1f1070c7f40d0747b5e05b9ab90d7df609988369e32717b7f6",
     "baseline.npz": "8d36efe04ca16ea629fd5cbd87466138a25661c32b5793d0ecb6fa913c5b962b",
     "covariance_weights.npz": "8017263fbf044a9ccc45ac6e63c1a893dd49445941536a2c21ec0ea9505dd8dd"

@@ -1,45 +1,36 @@
-# Good current predictions can conceal incorrect relaxation
+# Accurate currents can conceal incorrect relaxation
 
-## Question and setup
+This project turns a known electrolyte theory into a controlled scientific-ML benchmark. Given an electric-field history, a surrogate predicts two interaction-current coefficients. The trusted covariance solver supplies labels and independent physical limits, allowing errors in small long-time signals to be measured directly.
 
-Can a compact neural surrogate learn the nonlinear current response of an electrolyte, including its small algebraic relaxation toward a stationary value?
+The learning dataset contains 1,088 complete histories spanning 100 Debye times: 768 training, 128 validation, and 192 tests, including unseen waveform and amplitude families. Changes occur early, followed by long holds. A separate set of 32 late-change protocols tests transfer across the full window. Whole histories define the splits.
 
-The input is an electric-field history. Targets are the electrostatic correction and history-dependent hydrodynamic coefficient from a Gaussian covariance model for a symmetric binary electrolyte. Known bare-current and hydrodynamic field factors are supplied exactly. This avoids giving a model credit for fitting a dominant known baseline.
+## Neural prediction and its failure
 
-The dataset contains 1,088 complete histories spanning **100 Debye times**, sampled every 0.05 times. Steps, pulses, reversals, and random switching change early, then hold the final field through time 100. Whole histories define training (768), validation (128), and tests (192, including unseen waveforms and larger amplitudes).
+A causal 32-unit GRU enforces field parity and equilibrium. A polynomial ridge baseline uses the same records and normalization. The reference GRU's full-history electrostatic/hydrodynamic-residual NRMSE is **0.56% / 0.62%**, compared with **6.38% / 18.10%** for regression. Immediately after changes the GRU errors are **1.76% / 2.19%**; unseen waveforms give **3.55% / 5.15%**. The late-change probes give **0.48% / 1.08%**. These scores use different reference populations and should not be interpreted as matched gains between conditions.
 
-A 32-unit GRU is compared with causal ridge regression using lagged polynomial field features. Both respect field parity and equilibrium; inputs are shifted one sample to preserve covariance causality. The GRU has 120 warm-up epochs on the first 12 times, then 20 full-history epochs with the same optimizer state and a lower learning rate. Full 100-time validation selects the supplied checkpoint. Regression is fitted on those same complete histories.
+Ordinary current accuracy conceals a larger physical error. After a sustained field step, the reference approaches stationarity approximately as time^(-3/2), but the GRU develops a biased plateau. The mismatch is visible before the 100-time training boundary and persists in the diagnostic through time 1,000. All curves subtract the same physical stationary value. Switch-off separately tests exponential relaxation and signs.
 
-## What the reader should see
+## A controlled loss intervention
 
-![Different field histories and their separate current responses](../results/field_responses.png)
+Three paired training seeds compare ordinary MSE with MSE plus a stationary-centered late-asinh penalty. Each pair shares its warm-up state, optimizer moments, batch order, and full-history training budget. Both use a fixed final epoch. Calibration uses training records only; stationary coefficients enter the loss rather than the neural input or inference output.
 
-These additional step, pulse, reversal, and oscillating protocols distribute changes throughout the 100-time window. They illustrate the field-to-current problem and probe transfer to later changes; they are not training examples. The plotted coefficients include the full hydrodynamic term, while the error metric removes its known instantaneous baseline.
+The penalty lowered electrostatic tail error in 2/3 pairs and hydrodynamic tail error in 1/3. Both settings retain late plateaus; this intervention does not reliably recover the algebraic tail. The effect depends on the training seed and current term.
 
-On the 128 standard test histories, GRU electrostatic and hydrodynamic-residual NRMSE are **0.56% and 0.62%**, versus **6.38% and 18.10%** for regression. Early-prefix GRU errors are 1.11% and 1.28%; the normalizations differ, so the lower full-history scores alone do not establish better transient learning.
+Mean ± sample SD across three paired training seeds; each cell lists electrostatic / hydrodynamic. Tail scores use five amplitude diagnostics over times 100–1,000 and are dimensionless error ratios, not percentages.
 
-## The failure average error hides
-
-A sustained f=3 step continues through 1,000 times. All models have the same true stationary value subtracted. The reference uses independently refined wavevector quadrature.
-
-| Departure from stationary gamma at time 1,000 | Electrostatic | Hydrodynamic |
+| Continuation loss | Standard-test current NRMSE | Tail relative RMS error |
 |---|---:|---:|
-| Full reference | -2.72e-9 | +5.06e-7 |
-| GRU trained through time 100 | -2.66e-6 | +3.91e-5 |
-| Physical reduction | -2.79e-9 | +5.14e-7 |
+| MSE | 0.68 ± 0.18% / 1.00 ± 0.53% | 2605 ± 458 / 1494 ± 1120 |
+| MSE + late asinh | 0.72 ± 0.24% / 1.02 ± 0.55% | 1262 ± 1409 / 1183 ± 1158 |
 
-![Unscaled stationary departures on logarithmic axes](../results/relaxation.png)
+![Matched loss experiment across three training seeds](../results/loss_ablation.png)
 
-The reference's late log–log slopes are approximately -1.5. The GRU departures flatten around a biased stationary value, with a visible mismatch before the training boundary. The graph establishes incorrect relaxation toward the physical limit; it does not determine the network's decay law about its own biased limit. Longer training histories therefore did not resolve this failure for the supplied fit.
+Per-seed ordinary errors, tail errors, and paired differences are supplied alongside means and sample standard deviations. Finite-endpoint prediction error is distinguished from a genuine physical departure at that time; late prediction variation is reported separately. Three seeds describe training variability on this dataset, not general statistical confidence. [Protocol](EXPERIMENT.md) and [complete results](../results/loss_ablation.json).
 
-## Physical comparison and scope
+## A separate physical reduction
 
-The reduced model retains 288 Fourier modes with known field-dependent covariance equations. Learning adjusts shared positive integration weights. Its worst held-out tail relative RMS error is **1.12%**, versus **3.90%** for ordinary weights on the same grid, over times 10–1,000 and five held-out amplitudes.
+The reduced model retains known covariance dynamics at 288 wavevectors and learns positive integration weights. This preserves a range of physical relaxation rates. Learning improves worst tail relative RMS error from **3.90% to 1.12%** on five held-out fitting amplitudes over times 10–1,000, compared with ordinary weights on the same grid.
 
-This is supervised physical model reduction: it receives the dynamics and longer on/off fitting curves. Its accuracy cannot be attributed to architecture alone. Switch-off also matters: electrostatic relaxation includes an exponential factor, and the hydrodynamic current vanishes at zero field. A universal algebraic output envelope would impose incorrect physics.
+This model receives known dynamics and longer on/off fitting curves. Its success demonstrates supervised physical reduction and is presented separately from the data-matched regression/GRU comparison. A finite mode grid also eventually loses the continuum algebraic law.
 
-**A small average current error is insufficient evidence that a surrogate has learned slow relaxation.** The portfolio contribution is a reproducible baseline, careful current targets, held-out histories, and a diagnostic that exposes failure on physically meaningful small signals.
-
-All labels are synthetic theory predictions. These single-seed fits do not establish that GRUs cannot learn algebraic memory; the finite physical grid is also only validated over a finite window. Stationary bias, tiny-signal weighting, and float32 precision remain distinct issues. S4, pLSTM, and exploratory filter banks are omitted to keep this project focused.
-
-References: [2023 temporal-response paper](https://doi.org/10.1088/1742-5468/acdced), [2025 covariance paper](https://doi.org/10.1088/1742-5468/adb4ce). Exact scores are in [metrics.json](../results/metrics.json).
+The useful ML result is a reproducible training/evaluation workflow that exposes physical failures hidden by aggregate scores. All labels are synthetic Gaussian point-ion theory predictions; these fits establish neither experimental validity nor a general limitation of GRUs. [Physical conventions and papers](PHYSICS.md), [reproduction guide](REPRODUCING.md), and [verification record](VERIFICATION.json) document the scope.

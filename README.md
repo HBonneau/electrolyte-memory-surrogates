@@ -1,93 +1,95 @@
-# Learning electrolyte memory
+# Scientific ML for electrolyte relaxation
 
-**Can a model predict currents accurately while learning the wrong long-time relaxation?**
+[![Tests](https://github.com/HBonneau/electrolyte-memory-surrogates/actions/workflows/tests.yml/badge.svg)](https://github.com/HBonneau/electrolyte-memory-surrogates/actions/workflows/tests.yml)
 
-A small GRU predicts nonlinear electrolyte currents from unseen electric-field histories with about 0.6% normalized error over 100 Debye times. Yet its small departure from stationarity levels off while the physical reference continues to decay algebraically.
+**Accurate current predictions can conceal incorrect long-time dynamics.**
 
-This scientific-ML study makes that failure measurable, then compares it with a reduced model that retains the physical memory and learns positive integration weights.
+A reproducible PyTorch study of field-to-current surrogates, built on my coauthored electrolyte research. It covers simulation, dataset design, causal training, and physical failure analysis.
 
-## From a field history to separate current terms
+A 3,522-parameter GRU predicts ordinary currents well, but misses their small algebraic relaxation. A controlled loss experiment and a physical reduction examine that discrepancy.
 
-![Field histories and resulting current terms over 100 Debye times](results/field_responses.png)
+## The prediction task
 
-Each column shows a different driving protocol: a step, pulse, reversal, or oscillating field. The rows show the field (also the dimensionless bare-current coefficient), electrostatic current coefficient, and full hydrodynamic current coefficient. These additional examples place changes throughout the 100-time window; they are separate from the training histories. The physical reduction and reference nearly overlap.
+![Field histories and separate current responses over 100 Debye times](results/field_responses.png)
 
-## Average accuracy and slow relaxation
+Input: an electric-field history; outputs: two interaction-current coefficients. The columns show a step, pulse, reversal, and oscillating field. Time is measured in the electrolyte’s characteristic Debye relaxation time.
 
-| Model | Electrostatic test NRMSE | Hydrodynamic residual test NRMSE |
+## Same-data comparison: regression and GRU
+
+Both models share data, whole-history splits, and normalization. Regression uses polynomial lag features; the 32-unit GRU enforces causality, field parity, and equilibrium.
+
+Each cell lists **electrostatic / hydrodynamic-residual NRMSE**. The hydrodynamic score excludes the known instantaneous baseline.
+
+| Evaluation condition | Regression | Reference GRU, seed 13 |
 |---|---:|---:|
-| Causal regression baseline | 6.38% | 18.10% |
-| GRU trained through 100 Debye times | 0.56% | 0.62% |
-| Physical reduction, learned weights | 0.00057% | 0.00095% |
+| Whole 100-time histories | 6.38% / 18.10% | 0.56% / 0.62% |
+| After changes (<1 Debye time) | 9.82% / 19.08% | 1.76% / 2.19% |
+| Unseen waveforms | 8.14% / 27.56% | 3.55% / 5.15% |
+| Larger field amplitudes | 118.41% / 116.14% | 1.91% / 2.53% |
+| Late field changes | 7.23% / 22.40% | 0.48% / 1.08% |
 
-These scores cover all samples of the 128 standard test histories. The full evaluation also reports 64 waveform/amplitude challenge histories and separate early-time scores, because the long stationary holds can make average errors look small.
+Histories span 100 times, with training changes ending by time 10. Approximately 90% of samples follow that cutoff. The 32 additional late-change probes are evaluation-only. See [errors by regime](results/accuracy_by_regime.png) and [exact scores](results/metrics.json).
 
-![Small departures reveal incorrect long-time relaxation](results/relaxation.png)
+## The physical failure
 
-The GRU's departure from the **true stationary current** becomes biased even within the 100-time training window. The step diagnostic continues through 1,000 times to expose the discrepancy. The selected 288-mode physical reduction reaches **1.12% worst held-out tail relative RMS error through 1,000 times**, compared with **3.90%** for ordinary integration weights on the same grid.
+![Small stationary departures expose incorrect relaxation](results/relaxation.png)
 
-These are different learning problems: the GRU learns dynamics from sampled histories through time 100; the physical reduction receives known equations and is fitted to on/off curves through time 1,000. Its success demonstrates supervised physical model reduction, not architectural superiority or neural discovery of the decay law.
+All curves subtract the **same physical stationary value**. The reference decays approximately as time^(-3/2); the GRU plateaus before its 100-time training boundary. The diagnostic continues to 1,000 times. It establishes incorrect physical relaxation, without identifying decay about the network’s own limit.
 
-## Install and run
+## Controlled experiment: change the loss
 
-Use Python 3.11. From the repository root:
+Three paired training seeds compare MSE with MSE plus a stationary-centered late-asinh penalty. Each pair shares its warm-up state, optimizer, batches, and 20-epoch budget. Endpoints are fixed; calibration uses training data only. No exponent or inference correction is imposed.
+
+Mean ± sample SD across three paired training seeds; each cell lists electrostatic / hydrodynamic. Tail scores use five amplitude diagnostics over times 100–1,000 and are dimensionless error ratios, not percentages.
+
+| Continuation loss | Standard-test current NRMSE | Tail relative RMS error |
+|---|---:|---:|
+| MSE | 0.68 ± 0.18% / 1.00 ± 0.53% | 2605 ± 458 / 1494 ± 1120 |
+| MSE + late asinh | 0.72 ± 0.24% / 1.02 ± 0.55% | 1262 ± 1409 / 1183 ± 1158 |
+
+The penalty improved electrostatic tails in 2/3 pairs and hydrodynamic tails in 1/3. Both settings retain late plateaus; this intervention does not reliably recover the algebraic tail.
+
+[Experiment protocol](docs/EXPERIMENT.md) · [Paired results](results/loss_ablation.json) · [Tail comparison figure](results/loss_ablation.png)
+
+## Separate comparison: supervised physical reduction
+
+The reduced model evolves known covariance dynamics at 288 wavevectors and learns positive integration weights. Its on/off fitting curves extend to time 1,000, providing different physical information and training data from the GRU.
+
+| Same physical grid and held-out amplitude diagnostics | Worst tail relative RMS error |
+|---|---:|
+| Ordinary integration weights | 3.90% |
+| Learned integration weights | 1.12% |
+
+The retained dynamics supply the memory mechanism; learning improves its finite approximation.
+
+## Run it
+
+Use Python 3.11, from the repository root:
 
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
-
 python -m electrolyte_surrogate.demo
-python -m electrolyte_surrogate.evaluate
 python -m unittest discover -s tests -v
 ```
 
-The demo writes the four-case figure and prediction CSVs to `runs/demo/`. Evaluation checks all 192 test histories and writes tail figures, signed predictions, and warmed inference timings to `results/reproduced/`. Saved results and checkpoints are included; training is optional. No GPU is required.
-
-To fit each model separately:
+Saved data, weights, and figures are included. Training is optional; no GPU is required. The demo writes to `runs/demo/`. Reproduce all evaluations with:
 
 ```bash
-python -m electrolyte_surrogate.train --model baseline
-python -m electrolyte_surrogate.train --model gru
-python -m electrolyte_surrogate.train --model physical
+python -m electrolyte_surrogate.evaluate --ablation artifacts/loss_ablation
 ```
 
-New fits go to `runs/training/`. GRU training uses 120 warm-up epochs on the early prefix, followed by 20 epochs on complete 100-time histories, selecting the checkpoint on full-history validation. See [the reproduction guide](docs/REPRODUCING.md) for settings, custom fields, and data generation.
+For fitting, data generation, measured runtimes, and custom fields, see [REPRODUCING.md](docs/REPRODUCING.md).
 
-## Where things live
+## Read the code
 
-```text
-src/electrolyte_surrogate/
-    model.py          GRU definition and prediction
-    baseline.py       Regression fitting and prediction
-    reduction.py      Physical modes and weight fitting
-    physics.py        Full covariance reference calculation
-    data.py           Loading, splits, and current reconstruction
-    generate_data.py  Rebuild the 100-time synthetic histories
-    train.py          Training commands
-    evaluate.py       Metrics, tail diagnostics, and timing
-    demo.py           Four field-to-current examples
-artifacts/            Fitted models and training history
-data/                Dataset and an example field CSV
-results/              Measured results, figures, and predictions
-tests/               Physics and ML correctness checks
-docs/                Summary, conventions, and reproduction guide
-pyproject.toml        Dependencies and package installation
-```
+Start with [the GRU](src/electrolyte_surrogate/model.py), [regression](src/electrolyte_surrogate/baseline.py), and [training](src/electrolyte_surrogate/train.py), then [loss calibration](src/electrolyte_surrogate/losses.py) and [the paired experiment](src/electrolyte_surrogate/ablate.py). Tests cover independent physics, causality, data separation, gradients, and saved-model accuracy.
 
-Regression coefficients are stored in `artifacts/baseline.npz`, GRU weights and normalization in `artifacts/gru.pt`, and physical integration weights in `artifacts/covariance_weights.npz`. **Code defines the model; an artifact stores what was fitted.**
+`artifacts/` stores fitted parameters, `data/` synthetic records, and `results/` measured evidence. Fresh-checkout training reproduced every reference-GRU parameter byte. Automated checks install the package, verify data/model hashes, run tests, and exercise inference.
 
-## Experimental scope
+Labels come from a Gaussian point-ion theory. These finite-window fits establish neither experimental validity nor a general limitation of GRUs. The physical grid also eventually loses the continuum tail.
 
-- 1,088 whole histories: 768 training, 128 validation, and 192 tests, all spanning 0–100 Debye times at intervals of 0.05.
-- Training protocols change during the early part of the history, then hold the final field through time 100. The overview adds late-change timing probes.
-- Validation selects settings and checkpoints. The repeatedly inspected f=3 long step is a diagnostic, not a blind test.
-- Current errors exclude known baselines. Tail tests subtract the same true stationary value; switch-off also checks signs.
+Author: Haggai Bonneau. Implementation developed with Codex assistance.
 
-The data are synthetic predictions of a symmetric binary Gaussian point-ion theory, not experimental validation. A finite physical mode set approximates the continuum tail over a finite tested window. These single-seed fits do not establish a general limitation of GRUs.
-
-Read [the project summary](docs/SUMMARY.md) and [physical conventions](docs/PHYSICS.md). Development used Codex assistance, with numerical verification against the original calculations.
-
-Code, supplied synthetic data, and trained weights are released under the [MIT license](LICENSE). Papers are cited rather than redistributed.
-
-[Upload instructions](docs/GITHUB.md) · [Verification record](docs/VERIFICATION.json)
+[Concise summary](docs/SUMMARY.md) · [Physical conventions and papers](docs/PHYSICS.md) · [Verification record](docs/VERIFICATION.json) · [MIT license](LICENSE)

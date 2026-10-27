@@ -1,41 +1,106 @@
 {
-  "warmup_first_two_epochs": "exact match (previous check)",
-  "continuation_epochs_checked": 1,
-  "continuation_validation_max_abs_difference": 2.9103830456733704e-11,
-  "continuation_tolerance": {
-    "rtol": 3e-07,
-    "atol": 1e-11
+  "date": "2026-10-27",
+  "tests": {
+    "count": 13,
+    "result": "PASS",
+    "scope": "Physics, saved inference, whole-history separation, loss gradients/calibration, regime masks, and finite-tail error accounting"
   },
-  "regenerated_label_histories": 5,
-  "regenerated_labels_max_abs_error": 7.801030266207931e-09,
-  "data_horizon": 100.0,
-  "samples": 2001,
-  "date": "2026-10-26",
-  "unittest_checks": 6,
-  "tests": "PASS",
-  "editable_install": "PASS",
-  "full_evaluation_192_histories": "PASS; complete 100-time histories plus separate early-prefix metrics",
-  "baseline_fit": "Refitted on complete 100-time data; selected 120 lags and ridge 1e-5 using validation only.",
-  "physical_weights": "Existing selected model preserved; five-amplitude tail evaluation repeated.",
-  "physical_worst_tail_relative_rmse": 0.01116901321323547,
-  "generated_field_histories": "All 1088 complete 2001-sample field histories and splits match exactly.",
-  "gru_cli_smoke": "PASS; two prefix warm-up epochs followed by one full-history epoch; smoke artifacts excluded from release.",
-  "full_gru_retraining": "Not repeated. Supplied checkpoint was already trained through 100 times; warm-up trajectory and one continuation epoch verified against the recorded training.",
-  "overview": "Four independent 100-time timing-transfer cases generated and visually inspected.",
-  "removed_plotting": "Compensated tail panels and their plotting code removed from this focused package.",
-  "environment": {
-    "python": "3.11.13",
-    "packages": {
-      "numpy": "1.26.4",
-      "scipy": "1.16.0",
-      "torch": "2.2.2",
-      "matplotlib": "3.10.0"
-    }
+  "fresh_checkout_reproduction": {
+    "source_commit": "409d706403c7ada4e1993cc7a111cdceb4a76d84",
+    "default_seed": 13,
+    "warmup_epochs": 120,
+    "full_history_epochs": 20,
+    "maximum_parameter_difference": 0.0,
+    "bitwise_equal": true,
+    "output_scales_equal": true,
+    "continuation": 459.52904159697937,
+    "byte_comparison": "All state-dict tensor byte strings compared directly.",
+    "candidate_checkpoint": "artifacts/loss_ablation/seed-13/mse.pt",
+    "reference_checkpoint": "artifacts/gru.pt",
+    "training_seconds": 830.1120472099865
   },
-  "custom_csv_demo": "PASS; full 100-time paired-pulse CSV.",
-  "generated_figures_visually_inspected": [
+  "loss_study": {
+    "seeds": [
+      13,
+      29,
+      47
+    ],
+    "paired_models": 6,
+    "warmup_epochs": 120,
+    "continuation_epochs": 20,
+    "selection": "Fixed final continuation epoch for both arms",
+    "paired_batch_order_hashes": {
+      "13": "7f0277af870ac51b18e14547ef54021c1288433c74ca31f3775c76e601ae418d",
+      "29": "7eeeb55e36f06a37c597973fc52334895c79b4ad733c2f779f45c0a1a2953579",
+      "47": "27670d6fa03440a85620439cf1ae0781866526d372057e8b6dbc1b368572ad08"
+    },
+    "training_phase_seconds": 3746.9345309069613,
+    "training_phase_minutes": 62.448908848449356,
+    "configuration": "artifacts/loss_ablation/configuration.json",
+    "training_records": "artifacts/loss_ablation/training.json",
+    "evaluation": "PASS; all six endpoints scored on the original tests, 32 timing probes, and five-amplitude step diagnostics.",
+    "reference_max_relative_quadrature_difference": 3.085775237407795e-08
+  },
+  "timing_probes": {
+    "seed": 20261027,
+    "role": "Evaluation only; never used for fitting or checkpoint selection",
+    "histories": 32,
+    "dt": 0.05,
+    "horizon": 100.0,
+    "fine_quadrature": [
+      96,
+      64
+    ],
+    "coarse_quadrature": [
+      48,
+      48
+    ],
+    "max_abs_quadrature_difference": [
+      1.1131621232424171e-10,
+      2.605028415203492e-10
+    ],
+    "dataset_sha256": "e7a383dc2a268a6a7c3507843c32d67eaea79b9a2d2b791befaedbe6e9611de8"
+  },
+  "regenerated_labels": {
+    "complete_histories": 5,
+    "max_abs_error": 7.801030266207931e-09,
+    "tolerance": 2e-08
+  },
+  "hardware": {
+    "model": "MacBook Air (MacBookAir9,1)",
+    "cpu": "Intel Core i7",
+    "nominal_clock_GHz": 1.2,
+    "cores": 4,
+    "memory_GB": 8,
+    "torch_threads": 2,
+    "accelerator": "CPU"
+  },
+  "software": {
+    "numpy": "1.26.4",
+    "scipy": "1.16.0",
+    "matplotlib": "3.10.0",
+    "torch": "2.2.2"
+  },
+  "python": "3.11.13",
+  "environment": "macOS-10.16-x86_64-i386-64bit",
+  "continuous_integration": {
+    "workflow": ".github/workflows/tests.yml",
+    "platform": "Ubuntu 24.04 / Python 3.11 / CPU PyTorch",
+    "checks": [
+      "install and dependency consistency",
+      "supplied data/model hashes",
+      "13 tests",
+      "custom-field inference command"
+    ],
+    "status": "See the GitHub Actions badge for the per-commit result."
+  },
+  "full_evaluation": "All 192 original test histories plus 32 evaluation-only timing probes; six paired endpoints scored separately.",
+  "scope": "Synthetic theory, fixed data and training protocol. Standard deviations describe three training seeds; timing figures are reproduction-cost measurements, not a controlled comparison of loss speed.",
+  "figures_visually_inspected": [
     "field_responses.png",
+    "accuracy_by_regime.png",
     "relaxation.png",
-    "switch_off.png"
+    "switch_off.png",
+    "loss_ablation.png"
   ]
 }

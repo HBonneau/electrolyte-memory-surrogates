@@ -42,6 +42,10 @@ The reduced model uses the same equations at fewer nodes and learns nonnegative 
 
 `physics.solve_current(times, E, parameters, ...)` accepts seconds, a callable field in V/m, and explicit SI material parameters; it returns separate dimensional currents. `physics.reference_coefficients(tau, field)` returns dimensionless latent targets for a sampled held field. Its synthetic unit parameters specify no real material.
 
-The GRU and regression start at zero-field equilibrium and require dt=0.05. The physical API supports nonuniform times and a stationary nonzero prehistory through `initial_field`. All tested models retain history across field changes.
+The GRU and regression start at zero-field equilibrium and require dt=0.05. Their learning histories span 100 Debye times; the physical reduction uses on/off fitting curves through time 1,000. The physical API supports nonuniform times and a stationary nonzero prehistory through `initial_field`. All tested models retain history across field changes.
 
 The physical reduced grid eventually decays exponentially because it has finitely many modes. Its demonstrated approximation to the continuum algebraic behavior ends at 1,000 Debye times.
+
+## Loss intervention
+
+The paired neural experiment centers an asinh penalty on the known stationary coefficients and applies it after eight times without a field change. Stationary values enter this training objective only. Predictions retain the original recurrent state and current reconstruction; no stationary correction or universal algebraic envelope is applied at inference. The switch-off response therefore remains an independent diagnostic with its distinct exponential factor.

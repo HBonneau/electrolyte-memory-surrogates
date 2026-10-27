@@ -1,0 +1,27 @@
+{
+  "data_sha256": "6efc5e9edc34b4979cddcbd7158c792d8a0dbfcdf3d2305515716c19db9f7280",
+  "seeds": [
+    13,
+    29,
+    47
+  ],
+  "warmup_epochs": 120,
+  "epochs": 20,
+  "learning_rate": 0.0003,
+  "batch_size": 64,
+  "waiting_time": 8.0,
+  "epsilon_fraction": 0.1,
+  "gradient_fraction": 0.25,
+  "selection": "Fixed final continuation epoch for both arms",
+  "platform": "macOS-10.16-x86_64-i386-64bit",
+  "machine": "x86_64",
+  "python": "3.11.13",
+  "torch": "2.2.2",
+  "numpy": "1.26.4",
+  "source_sha256": {
+    "ablate.py": "05fae5a545257f4bcec207966834d4547ff835baea40457d1e151bece76a2dad",
+    "train.py": "89360075bf312db8a50d13cb4767be1cf3f535e09eddbb0e91ccfa5f3e5b162a",
+    "losses.py": "6dd2972582bac01cb72a092c580eb8644454e353e8ae1a480bcb126f37d264fd",
+    "model.py": "7f9f3dda297cf9c0549c4e31bea24094de86f23faf5c1dea1b89830601075473"
+  }
+}

@@ -15,6 +15,9 @@ from electrolyte_surrogate.losses import TailLoss, calibrate_epsilon, elapsed_si
 from electrolyte_surrogate.physics import solve_current, unit_parameters, reference_coefficients
 from electrolyte_surrogate.physics import stationary_coefficients
 from electrolyte_surrogate.reduction import CovarianceModes
+from electrolyte_surrogate.evaluate import metrics
+from electrolyte_surrogate.protocols import timing_histories, regime_masks
+from electrolyte_surrogate.ablation_results import tail_metrics
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -33,6 +36,22 @@ class DataTests(unittest.TestCase):
         self.assertEqual(len(signatures), 1088)
         self.assertEqual(sum(data["split"] == "train"), 768)
         self.assertEqual(sum(data["split"] == "validation"), 128)
+
+    def test_late_timing_probes_are_separate_from_the_learning_dataset(self):
+        data = load_dataset(ROOT / "data/dataset.npz")
+        with np.load(ROOT / "data/timing_probe.npz", allow_pickle=False) as probe:
+            expected = list(timing_histories())
+            self.assertEqual(len(expected), 32)
+            known = {field.tobytes() for field in data["field"]}
+            for i, (family, field) in enumerate(expected):
+                assert_array_equal(field, probe["field"][i])
+                self.assertEqual(family, probe["family"][i])
+                self.assertNotIn(field.tobytes(), known)
+                known.add(field.tobytes())
+                last = np.flatnonzero(np.diff(field) != 0)[-1] + 1
+                self.assertGreater(probe["tau"][last], 10.)
+            self.assertEqual(probe["tau"][-1], 100.)
+            self.assertTrue(np.isfinite(probe["target"]).all())
 
 
 class PhysicsTests(unittest.TestCase):
@@ -112,6 +131,14 @@ class ModelTests(unittest.TestCase):
         assert_allclose(actual[:, 0], expected[:, 0], atol=1e-6, rtol=0)
         assert_allclose(actual[:, 1], expected[:, 1], atol=1e-5, rtol=0)
 
+    def test_saved_gru_retains_reference_accuracy(self):
+        indices = np.flatnonzero(self.data["split"] == "test")[:8]
+        field, truth = self.data["field"][indices], self.data["target"][indices]
+        estimate = predict(field, self.gru, self.scale)[0]
+        score = metrics(truth, estimate, field)
+        self.assertLess(score["Q_el_nrmse"], .05)
+        self.assertLess(score["hydrodynamic_residual_nrmse"], .05)
+
 
 class LossTests(unittest.TestCase):
     def test_stationary_centers_match_independent_reference(self):
@@ -139,6 +166,38 @@ class LossTests(unittest.TestCase):
         self.assertTrue(torch.isfinite(estimate.grad).all())
         assert_array_equal(estimate.grad.numpy()[~mask], 0.)
         self.assertGreater(float(torch.sum(torch.abs(estimate.grad))), 0.)
+
+
+class EvaluationTests(unittest.TestCase):
+    def test_tail_error_does_not_mistake_a_finite_physical_tail_for_bias(self):
+        elapsed = np.array([10., 50., 100., 500., 1000.])
+        steady = np.tile([-.01, .1], (5, 1))
+        truth = steady[:, None, :] + np.ones((5, len(elapsed), 2)) / elapsed[None, :, None]**1.5
+        report = tail_metrics(truth, truth.copy(), steady, elapsed)
+        assert_array_equal(report["beyond_training"]["relative_rmse"], 0.)
+        diagnostic = report["endpoint_diagnostic"]
+        assert_array_equal(diagnostic["endpoint_prediction_error"], 0.)
+        self.assertTrue(np.all(np.array(diagnostic["reference_endpoint_departure"]) > 0))
+        assert_array_equal(diagnostic["late_prediction_range"], diagnostic["late_reference_range"])
+
+    def test_regimes_restart_at_each_change_and_do_not_overlap(self):
+        field = np.zeros((1, 2001), dtype=np.float32)
+        field[:, 200:1000] = 3
+        masks = regime_masks(field)
+        self.assertFalse(any(mask[0, :200].any() for mask in masks.values()))
+        self.assertTrue(masks["recent_change"][0, 200])
+        self.assertTrue(masks["long_hold"][0, 400])
+        self.assertTrue(masks["recent_change"][0, 1000])
+        self.assertTrue(masks["long_hold_field_off"][0, 1200])
+        disjoint = sum(mask.astype(int) for name, mask in masks.items() if name != "long_hold_field_off")
+        assert_array_equal(disjoint[0, 200:], 1)
+
+    def test_zero_signal_metrics_remain_valid_json(self):
+        zero = np.zeros((10, 2))
+        result = metrics(zero, zero, np.zeros(10))
+        self.assertIsNone(result["Q_el_nrmse"])
+        self.assertIsNone(result["hydrodynamic_residual_nrmse"])
+        self.assertEqual(result["Q_el_rmse"], 0.)
 
 
 if __name__ == "__main__":

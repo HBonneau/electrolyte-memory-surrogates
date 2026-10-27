@@ -1,0 +1,2605 @@
+{
+  "configuration": {
+    "data_sha256": "6efc5e9edc34b4979cddcbd7158c792d8a0dbfcdf3d2305515716c19db9f7280",
+    "seeds": [
+      13,
+      29,
+      47
+    ],
+    "warmup_epochs": 120,
+    "epochs": 20,
+    "learning_rate": 0.0003,
+    "batch_size": 64,
+    "waiting_time": 8.0,
+    "epsilon_fraction": 0.1,
+    "gradient_fraction": 0.25,
+    "selection": "Fixed final continuation epoch for both arms",
+    "platform": "macOS-10.16-x86_64-i386-64bit",
+    "machine": "x86_64",
+    "python": "3.11.13",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "source_sha256": {
+      "ablate.py": "05fae5a545257f4bcec207966834d4547ff835baea40457d1e151bece76a2dad",
+      "train.py": "89360075bf312db8a50d13cb4767be1cf3f535e09eddbb0e91ccfa5f3e5b162a",
+      "losses.py": "6dd2972582bac01cb72a092c580eb8644454e353e8ae1a480bcb126f37d264fd",
+      "model.py": "7f9f3dda297cf9c0549c4e31bea24094de86f23faf5c1dea1b89830601075473"
+    }
+  },
+  "checkpoint_hashes": {
+    "seed-13/mse.pt": "9b3e7b069bc4c40522af6e815bfd431eeac7529c03b5e055c29d25e9b7b94374",
+    "seed-13/mixed.pt": "389f22fa6be1928a9b2b1daf0ae5b5a46c6bb275f20b4491ab7cd9bb0ade5421",
+    "seed-29/mse.pt": "e0afe038a42842a82b1395ff380c467cb83263679970d3e56d715cfaeb6ea708",
+    "seed-29/mixed.pt": "6954517c451d058bdc2c074d495f5344062bcb30d212226f6ecb95d4f051b9e1",
+    "seed-47/mse.pt": "3c07fd8675345c647aef743e3e8b79e3d3277e130c8b2b624b63dd35b6332695",
+    "seed-47/mixed.pt": "9dd1d97ed803194416a1d9de77b6925fcf6c73b2dc59d8b5f5cda238805e1975"
+  },
+  "reference": {
+    "fields": [
+      0.4,
+      1.2,
+      2.2,
+      3.0,
+      4.8
+    ],
+    "fine_quadrature": [
+      128,
+      96
+    ],
+    "coarse_quadrature": [
+      96,
+      64
+    ],
+    "late_interval": [
+      100.0,
+      1000.0
+    ],
+    "relative_quadrature_difference": [
+      [
+        1.2690455561196446e-08,
+        5.435789827869547e-09
+      ],
+      [
+        1.544505119670226e-10,
+        1.4934761074289024e-09
+      ],
+      [
+        5.481910261361611e-10,
+        1.4285413087983191e-09
+      ],
+      [
+        4.993782356338866e-09,
+        5.129757333913693e-10
+      ],
+      [
+        3.085775237407795e-08,
+        2.54907882271213e-08
+      ]
+    ]
+  },
+  "summary": {
+    "mse": {
+      "Q_el_nrmse": {
+        "mean": 0.0067567239764438096,
+        "sample_std": 0.001822251633765778,
+        "values": [
+          0.005554216995708471,
+          0.00885333151777203,
+          0.0058626234158509274
+        ]
+      },
+      "hydrodynamic_residual_nrmse": {
+        "mean": 0.010045737304259455,
+        "sample_std": 0.005319024339637298,
+        "values": [
+          0.00618357014191898,
+          0.01611261204713723,
+          0.007841029723722154
+        ]
+      },
+      "recent_Q_el_nrmse": {
+        "mean": 0.020133385733651362,
+        "sample_std": 0.0032672683934225266,
+        "values": [
+          0.017628237744499627,
+          0.023828953366981653,
+          0.018942966089472806
+        ]
+      },
+      "timing_Q_el_nrmse": {
+        "mean": 0.006583749361428599,
+        "sample_std": 0.0027883336898730233,
+        "values": [
+          0.004773187468987858,
+          0.00979471979049612,
+          0.0051833408248018195
+        ]
+      },
+      "tail_relative_rmse_el": {
+        "mean": 2605.4458373198745,
+        "sample_std": 457.64020734412725,
+        "values": [
+          2783.357045042779,
+          2085.5665035445213,
+          2947.413963372324
+        ]
+      },
+      "tail_relative_rmse_hyd": {
+        "mean": 1493.5727737250093,
+        "sample_std": 1119.5956097919534,
+        "values": [
+          264.60711178853904,
+          2455.5133442835518,
+          1760.5978651029375
+        ]
+      }
+    },
+    "mixed": {
+      "Q_el_nrmse": {
+        "mean": 0.00715509114974702,
+        "sample_std": 0.0024433703479897514,
+        "values": [
+          0.005471477437269022,
+          0.009957546446630746,
+          0.0060362495653412925
+        ]
+      },
+      "hydrodynamic_residual_nrmse": {
+        "mean": 0.010195817904471787,
+        "sample_std": 0.0054569346990210625,
+        "values": [
+          0.006268545455111295,
+          0.016426834431017643,
+          0.007892073827286423
+        ]
+      },
+      "recent_Q_el_nrmse": {
+        "mean": 0.021719213458198012,
+        "sample_std": 0.0052088563273645664,
+        "values": [
+          0.017758620107259915,
+          0.02761964526788177,
+          0.01977937499945235
+        ]
+      },
+      "timing_Q_el_nrmse": {
+        "mean": 0.006191260057950843,
+        "sample_std": 0.0025715781212362625,
+        "values": [
+          0.004583273438788012,
+          0.009157150291084812,
+          0.004833356443979708
+        ]
+      },
+      "tail_relative_rmse_el": {
+        "mean": 1261.5915861778556,
+        "sample_std": 1409.0127230718826,
+        "values": [
+          591.764720023234,
+          2880.5672571593695,
+          312.4427813509631
+        ]
+      },
+      "tail_relative_rmse_hyd": {
+        "mean": 1182.9972577469955,
+        "sample_std": 1158.1112181654144,
+        "values": [
+          789.8431734894612,
+          272.64431421077273,
+          2486.5042855407523
+        ]
+      }
+    }
+  },
+  "paired_differences": {
+    "Q_el_nrmse": {
+      "mixed_minus_mse": [
+        -8.273955843944927e-05,
+        0.0011042149288587148,
+        0.00017362614949036504
+      ],
+      "mean_difference": 0.0003983671733032102,
+      "mixed_lower_count": 1
+    },
+    "hydrodynamic_residual_nrmse": {
+      "mixed_minus_mse": [
+        8.497531319231512e-05,
+        0.000314222383880413,
+        5.104410356426836e-05
+      ],
+      "mean_difference": 0.00015008060021233215,
+      "mixed_lower_count": 0
+    },
+    "recent_Q_el_nrmse": {
+      "mixed_minus_mse": [
+        0.0001303823627602889,
+        0.003790691900900117,
+        0.0008364089099795434
+      ],
+      "mean_difference": 0.0015858277245466498,
+      "mixed_lower_count": 0
+    },
+    "timing_Q_el_nrmse": {
+      "mixed_minus_mse": [
+        -0.00018991403019984632,
+        -0.0006375694994113085,
+        -0.0003499843808221119
+      ],
+      "mean_difference": -0.00039248930347775556,
+      "mixed_lower_count": 3
+    },
+    "tail_relative_rmse_el": {
+      "mixed_minus_mse": [
+        -2191.592325019545,
+        795.0007536148482,
+        -2634.9711820213606
+      ],
+      "mean_difference": -1343.8542511420192,
+      "mixed_lower_count": 2
+    },
+    "tail_relative_rmse_hyd": {
+      "mixed_minus_mse": [
+        525.2360617009222,
+        -2182.869030072779,
+        725.9064204378149
+      ],
+      "mean_difference": -310.575515978014,
+      "mixed_lower_count": 1
+    }
+  },
+  "rows": [
+    {
+      "seed": 13,
+      "arm": "mse",
+      "ordinary": {
+        "test": {
+          "Q_el_nrmse": 0.005554216995708471,
+          "hydrodynamic_residual_nrmse": 0.00618357014191898,
+          "Q_el_rmse": 1.7134091384709837e-05,
+          "hydrodynamic_residual_rmse": 0.0008491109969099102
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.03545746963195523,
+          "hydrodynamic_residual_nrmse": 0.051545344400430855,
+          "Q_el_rmse": 4.179542769408191e-05,
+          "hydrodynamic_residual_rmse": 0.0012237553273532636
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.019075084742544303,
+          "hydrodynamic_residual_nrmse": 0.025301179437939077,
+          "Q_el_rmse": 7.860466903838243e-05,
+          "hydrodynamic_residual_rmse": 0.011754317410193402
+        }
+      },
+      "prefix_0_12": {
+        "test": {
+          "Q_el_nrmse": 0.011146858563864187,
+          "hydrodynamic_residual_nrmse": 0.012772563941739846,
+          "Q_el_rmse": 4.793335996656466e-05,
+          "hydrodynamic_residual_rmse": 0.0023833510464928865
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.03545643438557243,
+          "hydrodynamic_residual_nrmse": 0.05154534440043085,
+          "Q_el_rmse": 0.00012042900820698396,
+          "hydrodynamic_residual_rmse": 0.003526221738515504
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.026350819410038393,
+          "hydrodynamic_residual_nrmse": 0.03816848073535267,
+          "Q_el_rmse": 0.00015366133281185677,
+          "hydrodynamic_residual_rmse": 0.025470678810413493
+        }
+      },
+      "regimes": {
+        "test": {
+          "recent_change": {
+            "samples": 8032,
+            "Q_el_nrmse": 0.017628237744499627,
+            "hydrodynamic_residual_nrmse": 0.02189843835655825,
+            "Q_el_rmse": 8.75327443055218e-05,
+            "hydrodynamic_residual_rmse": 0.004132430212566383
+          },
+          "relaxing": {
+            "samples": 22753,
+            "Q_el_nrmse": 0.005528686165895107,
+            "hydrodynamic_residual_nrmse": 0.007367693047884321,
+            "Q_el_rmse": 2.0176954202696734e-05,
+            "hydrodynamic_residual_rmse": 0.0012421445045309519
+          },
+          "long_hold": {
+            "samples": 223409,
+            "Q_el_nrmse": 0.0015055868405975973,
+            "hydrodynamic_residual_nrmse": 0.0017836388939907123,
+            "Q_el_rmse": 4.4324934720781265e-06,
+            "hydrodynamic_residual_rmse": 0.00023556509362085244
+          },
+          "long_hold_field_off": {
+            "samples": 175958,
+            "Q_el_nrmse": 44.90644007873031,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 5.340187582696256e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "waveform_ood": {
+          "recent_change": {
+            "samples": 5894,
+            "Q_el_nrmse": 0.03544540989716793,
+            "hydrodynamic_residual_nrmse": 0.05154534440043085,
+            "Q_el_rmse": 0.00013771170083544049,
+            "hydrodynamic_residual_rmse": 0.004033555742560886
+          },
+          "relaxing": {
+            "samples": 4480,
+            "Q_el_nrmse": 0.22792312960929584,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.171465773679729e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold": {
+            "samples": 53152,
+            "Q_el_nrmse": 14.906159932810686,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 7.663619611176718e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold_field_off": {
+            "samples": 53152,
+            "Q_el_nrmse": 14.906159932810686,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 7.663619611176718e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "amplitude_ood": {
+          "recent_change": {
+            "samples": 1964,
+            "Q_el_nrmse": 0.04179226360443891,
+            "hydrodynamic_residual_nrmse": 0.05759980653043269,
+            "Q_el_rmse": 0.0002858318568161245,
+            "hydrodynamic_residual_rmse": 0.042157166865644684
+          },
+          "relaxing": {
+            "samples": 5634,
+            "Q_el_nrmse": 0.009833462434979245,
+            "hydrodynamic_residual_nrmse": 0.026442949520839996,
+            "Q_el_rmse": 4.872286765424993e-05,
+            "hydrodynamic_residual_rmse": 0.01564292876185486
+          },
+          "long_hold": {
+            "samples": 56007,
+            "Q_el_nrmse": 0.01608625006139411,
+            "hydrodynamic_residual_nrmse": 0.01919476875569506,
+            "Q_el_rmse": 6.29304112564648e-05,
+            "hydrodynamic_residual_rmse": 0.00842752581207644
+          },
+          "long_hold_field_off": {
+            "samples": 43209,
+            "Q_el_nrmse": 107.5403854270077,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.1480769019129533e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        }
+      },
+      "timing_probes": {
+        "overall": {
+          "Q_el_nrmse": 0.004773187468987858,
+          "hydrodynamic_residual_nrmse": 0.010794201362913435,
+          "Q_el_rmse": 2.062730802051054e-05,
+          "hydrodynamic_residual_rmse": 0.0020850666738821784
+        },
+        "regimes": {
+          "recent_change": {
+            "samples": 2059,
+            "Q_el_nrmse": 0.0161902745974514,
+            "hydrodynamic_residual_nrmse": 0.030306794690643617,
+            "Q_el_rmse": 8.327931979101028e-05,
+            "hydrodynamic_residual_rmse": 0.005928430767071184
+          },
+          "relaxing": {
+            "samples": 13172,
+            "Q_el_nrmse": 0.005425602927831283,
+            "hydrodynamic_residual_nrmse": 0.017711313697370352,
+            "Q_el_rmse": 2.7546905765310378e-05,
+            "hydrodynamic_residual_rmse": 0.0038977573025658634
+          },
+          "long_hold": {
+            "samples": 32626,
+            "Q_el_nrmse": 0.0019244011638651554,
+            "hydrodynamic_residual_nrmse": 0.001877784797603513,
+            "Q_el_rmse": 9.539916141891317e-06,
+            "hydrodynamic_residual_rmse": 0.00042515362878052916
+          },
+          "long_hold_field_off": {
+            "samples": 10434,
+            "Q_el_nrmse": 63.483257804426536,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.0915651330774156e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "families": {
+          "late_pulse": {
+            "Q_el_nrmse": 0.008240460871301663,
+            "hydrodynamic_residual_nrmse": 0.014661913542200792,
+            "Q_el_rmse": 1.5530580206547502e-05,
+            "hydrodynamic_residual_rmse": 0.0008779274472147233
+          },
+          "late_reversal": {
+            "Q_el_nrmse": 0.004619291556188022,
+            "hydrodynamic_residual_nrmse": 0.011510645317203519,
+            "Q_el_rmse": 2.2561289676651288e-05,
+            "hydrodynamic_residual_rmse": 0.0027356025507802592
+          },
+          "late_step": {
+            "Q_el_nrmse": 0.002976099070404964,
+            "hydrodynamic_residual_nrmse": 0.006443941788658642,
+            "Q_el_rmse": 1.4487028829300558e-05,
+            "hydrodynamic_residual_rmse": 0.0014441046889829034
+          },
+          "late_switching": {
+            "Q_el_nrmse": 0.0056067793191536715,
+            "hydrodynamic_residual_nrmse": 0.013451779654397977,
+            "Q_el_rmse": 2.7237081836447236e-05,
+            "hydrodynamic_residual_rmse": 0.002655239323862472
+          }
+        }
+      },
+      "tails": {
+        "within_training": {
+          "relative_rmse": [
+            86.63780623236762,
+            7.8174323696307395
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "beyond_training": {
+          "relative_rmse": [
+            2783.357045042779,
+            264.60711178853904
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "endpoint_diagnostic": {
+          "fields": [
+            0.4,
+            1.2,
+            2.2,
+            3.0,
+            4.8
+          ],
+          "elapsed_interval": [
+            500.0,
+            1000.0
+          ],
+          "endpoint_stationary_departure": [
+            [
+              1.950899487907767e-05,
+              -1.505944564727385e-06
+            ],
+            [
+              2.2376650361719506e-06,
+              0.00021770485378053844
+            ],
+            [
+              -1.9289939737579878e-05,
+              3.6797174820413225e-05
+            ],
+            [
+              -7.98435562739553e-06,
+              3.911766142596085e-05
+            ],
+            [
+              2.492404809718504e-07,
+              0.00018951775226211387
+            ]
+          ],
+          "reference_endpoint_departure": [
+            [
+              -1.2302561723260413e-09,
+              5.615186749602374e-09
+            ],
+            [
+              -8.423685945828374e-09,
+              1.486763690564108e-07
+            ],
+            [
+              -9.541208143871993e-09,
+              3.88586251509615e-07
+            ],
+            [
+              -8.16335169948057e-09,
+              5.06393162194585e-07
+            ],
+            [
+              -5.344222657292785e-09,
+              6.097544809624544e-07
+            ]
+          ],
+          "endpoint_prediction_error": [
+            [
+              1.9510225135249996e-05,
+              -1.5115597514769874e-06
+            ],
+            [
+              2.246088722117779e-06,
+              0.00021755617741148203
+            ],
+            [
+              -1.9280398529436006e-05,
+              3.640858856890361e-05
+            ],
+            [
+              -7.97619227569605e-06,
+              3.861126826376626e-05
+            ],
+            [
+              2.545847036291432e-07,
+              0.00018890799778115142
+            ]
+          ],
+          "late_prediction_range": [
+            [
+              0.0,
+              2.561137080192566e-09
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              4.656612873077393e-10,
+              0.0
+            ]
+          ],
+          "late_reference_range": [
+            [
+              2.0914520029030603e-09,
+              9.545749746209253e-09
+            ],
+            [
+              1.4336866029432405e-08,
+              2.531050784515543e-07
+            ],
+            [
+              1.6242649220413186e-08,
+              6.619088569470577e-07
+            ],
+            [
+              1.3897070873410133e-08,
+              8.627027801022535e-07
+            ],
+            [
+              9.09752944592418e-09,
+              1.0389002419453064e-06
+            ]
+          ],
+          "float32_output_ulp": [
+            [
+              1.1641532182693481e-10,
+              2.3283064365386963e-10
+            ],
+            [
+              2.3283064365386963e-10,
+              1.862645149230957e-09
+            ],
+            [
+              4.656612873077393e-10,
+              3.725290298461914e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ]
+          ],
+          "endpoint_error_in_output_ulps": [
+            [
+              167591.55778699182,
+              6492.099698543549
+            ],
+            [
+              9646.877605410293,
+              116799.58337813616
+            ],
+            [
+              41404.34056888707,
+              9773.356074810028
+            ],
+            [
+              17128.742485361174,
+              5182.3167015612125
+            ],
+            [
+              546.7164880745113,
+              25354.802263215184
+            ]
+          ],
+          "interpretation": "Finite-window endpoint bias and numerical variation; not a measured decay exponent about the model's own limit."
+        }
+      }
+    },
+    {
+      "seed": 13,
+      "arm": "mixed",
+      "ordinary": {
+        "test": {
+          "Q_el_nrmse": 0.005471477437269022,
+          "hydrodynamic_residual_nrmse": 0.006268545455111295,
+          "Q_el_rmse": 1.6878849798627145e-05,
+          "hydrodynamic_residual_rmse": 0.0008607795752944786
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.03668063512715269,
+          "hydrodynamic_residual_nrmse": 0.05605364795713329,
+          "Q_el_rmse": 4.3237231791866374e-05,
+          "hydrodynamic_residual_rmse": 0.0013307884757202799
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.017919926576419658,
+          "hydrodynamic_residual_nrmse": 0.025535805152323336,
+          "Q_el_rmse": 7.384448964412296e-05,
+          "hydrodynamic_residual_rmse": 0.011863318855214204
+        }
+      },
+      "prefix_0_12": {
+        "test": {
+          "Q_el_nrmse": 0.011152347567581043,
+          "hydrodynamic_residual_nrmse": 0.013089926374006928,
+          "Q_el_rmse": 4.795696360246893e-05,
+          "hydrodynamic_residual_rmse": 0.002442570643162077
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.0366795929571414,
+          "hydrodynamic_residual_nrmse": 0.05605364795713329,
+          "Q_el_rmse": 0.00012458350868641913,
+          "hydrodynamic_residual_rmse": 0.003834635198361123
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.025774306615209304,
+          "hydrodynamic_residual_nrmse": 0.038540613687444526,
+          "Q_el_rmse": 0.0001502994743793718,
+          "hydrodynamic_residual_rmse": 0.025719011432380375
+        }
+      },
+      "regimes": {
+        "test": {
+          "recent_change": {
+            "samples": 8032,
+            "Q_el_nrmse": 0.017758620107259915,
+            "hydrodynamic_residual_nrmse": 0.022409903759005173,
+            "Q_el_rmse": 8.818015592923938e-05,
+            "hydrodynamic_residual_rmse": 0.004228948286017091
+          },
+          "relaxing": {
+            "samples": 22753,
+            "Q_el_nrmse": 0.0053048451373400585,
+            "hydrodynamic_residual_nrmse": 0.007546986456265495,
+            "Q_el_rmse": 1.936004580053415e-05,
+            "hydrodynamic_residual_rmse": 0.0012723721918778414
+          },
+          "long_hold": {
+            "samples": 223409,
+            "Q_el_nrmse": 0.0010129688794519951,
+            "hydrodynamic_residual_nrmse": 0.0015445210615357544,
+            "Q_el_rmse": 2.982211204640379e-06,
+            "hydrodynamic_residual_rmse": 0.00020398481423894254
+          },
+          "long_hold_field_off": {
+            "samples": 175958,
+            "Q_el_nrmse": 42.045890277071116,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 5.000016495793734e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "waveform_ood": {
+          "recent_change": {
+            "samples": 5894,
+            "Q_el_nrmse": 0.03666928445826506,
+            "hydrodynamic_residual_nrmse": 0.0560536479571333,
+            "Q_el_rmse": 0.00014246667046075666,
+            "hydrodynamic_residual_rmse": 0.004386342088483387
+          },
+          "relaxing": {
+            "samples": 4480,
+            "Q_el_nrmse": 0.22517421122628342,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.121154868555567e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold": {
+            "samples": 53152,
+            "Q_el_nrmse": 14.430143018220612,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 7.418887729971385e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold_field_off": {
+            "samples": 53152,
+            "Q_el_nrmse": 14.430143018220612,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 7.418887729971385e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "amplitude_ood": {
+          "recent_change": {
+            "samples": 1964,
+            "Q_el_nrmse": 0.04121960458650306,
+            "hydrodynamic_residual_nrmse": 0.05781628160519344,
+            "Q_el_rmse": 0.00028191524220131536,
+            "hydrodynamic_residual_rmse": 0.04231560447852313
+          },
+          "relaxing": {
+            "samples": 5634,
+            "Q_el_nrmse": 0.009076667124586423,
+            "hydrodynamic_residual_nrmse": 0.027062508582524146,
+            "Q_el_rmse": 4.4973096096831635e-05,
+            "hydrodynamic_residual_rmse": 0.016009443029034044
+          },
+          "long_hold": {
+            "samples": 56007,
+            "Q_el_nrmse": 0.014558858882710484,
+            "hydrodynamic_residual_nrmse": 0.019370565116857856,
+            "Q_el_rmse": 5.6955161918849645e-05,
+            "hydrodynamic_residual_rmse": 0.008504709777677954
+          },
+          "long_hold_field_off": {
+            "samples": 43209,
+            "Q_el_nrmse": 99.45646543734445,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.061774795218867e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        }
+      },
+      "timing_probes": {
+        "overall": {
+          "Q_el_nrmse": 0.004583273438788012,
+          "hydrodynamic_residual_nrmse": 0.010564896746515886,
+          "Q_el_rmse": 1.980659539947882e-05,
+          "hydrodynamic_residual_rmse": 0.0020407729463758
+        },
+        "regimes": {
+          "recent_change": {
+            "samples": 2059,
+            "Q_el_nrmse": 0.015650482973302952,
+            "hydrodynamic_residual_nrmse": 0.02942477840113425,
+            "Q_el_rmse": 8.050274679236308e-05,
+            "hydrodynamic_residual_rmse": 0.005755896107396349
+          },
+          "relaxing": {
+            "samples": 13172,
+            "Q_el_nrmse": 0.005587468946243653,
+            "hydrodynamic_residual_nrmse": 0.01738260070737524,
+            "Q_el_rmse": 2.8368732945648076e-05,
+            "hydrodynamic_residual_rmse": 0.003825416905964343
+          },
+          "long_hold": {
+            "samples": 32626,
+            "Q_el_nrmse": 0.0012108009662627765,
+            "hydrodynamic_residual_nrmse": 0.0018470022874876538,
+            "Q_el_rmse": 6.002355381799827e-06,
+            "hydrodynamic_residual_rmse": 0.00041818408898266026
+          },
+          "long_hold_field_off": {
+            "samples": 10434,
+            "Q_el_nrmse": 59.23370660897585,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.0184960739804206e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "families": {
+          "late_pulse": {
+            "Q_el_nrmse": 0.008401342870052871,
+            "hydrodynamic_residual_nrmse": 0.014856812688192125,
+            "Q_el_rmse": 1.5833790284772247e-05,
+            "hydrodynamic_residual_rmse": 0.0008895976367307104
+          },
+          "late_reversal": {
+            "Q_el_nrmse": 0.004237206030004568,
+            "hydrodynamic_residual_nrmse": 0.011283550505357334,
+            "Q_el_rmse": 2.0695128571073788e-05,
+            "hydrodynamic_residual_rmse": 0.002681631541385426
+          },
+          "late_step": {
+            "Q_el_nrmse": 0.002741891107680871,
+            "hydrodynamic_residual_nrmse": 0.006404083155130875,
+            "Q_el_rmse": 1.3346953372211021e-05,
+            "hydrodynamic_residual_rmse": 0.001435172261989971
+          },
+          "late_switching": {
+            "Q_el_nrmse": 0.005493044937570919,
+            "hydrodynamic_residual_nrmse": 0.013031636402609058,
+            "Q_el_rmse": 2.6684573438585998e-05,
+            "hydrodynamic_residual_rmse": 0.0025723074804583426
+          }
+        }
+      },
+      "tails": {
+        "within_training": {
+          "relative_rmse": [
+            18.022719286988824,
+            24.099893730030324
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "beyond_training": {
+          "relative_rmse": [
+            591.764720023234,
+            789.8431734894612
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "endpoint_diagnostic": {
+          "fields": [
+            0.4,
+            1.2,
+            2.2,
+            3.0,
+            4.8
+          ],
+          "elapsed_interval": [
+            500.0,
+            1000.0
+          ],
+          "endpoint_stationary_departure": [
+            [
+              2.4969910698640317e-06,
+              2.4678888112517755e-05
+            ],
+            [
+              -3.5805399180945975e-06,
+              0.00016991496718671978
+            ],
+            [
+              -1.1519449836275633e-05,
+              3.470728696297609e-05
+            ],
+            [
+              -4.122626571752448e-06,
+              5.0010410258663485e-05
+            ],
+            [
+              -1.2650042838739835e-05,
+              0.0001233044424972518
+            ]
+          ],
+          "reference_endpoint_departure": [
+            [
+              -1.2302561723260413e-09,
+              5.615186749602374e-09
+            ],
+            [
+              -8.423685945828374e-09,
+              1.486763690564108e-07
+            ],
+            [
+              -9.541208143871993e-09,
+              3.88586251509615e-07
+            ],
+            [
+              -8.16335169948057e-09,
+              5.06393162194585e-07
+            ],
+            [
+              -5.344222657292785e-09,
+              6.097544809624544e-07
+            ]
+          ],
+          "endpoint_prediction_error": [
+            [
+              2.4982213260363578e-06,
+              2.4673272925768153e-05
+            ],
+            [
+              -3.572116232148769e-06,
+              0.00016976629081766337
+            ],
+            [
+              -1.1509908628131761e-05,
+              3.4318700711466477e-05
+            ],
+            [
+              -4.114463220052968e-06,
+              4.95040170964689e-05
+            ],
+            [
+              -1.2644698616082542e-05,
+              0.00012269468801628935
+            ]
+          ],
+          "late_prediction_range": [
+            [
+              0.0,
+              1.30385160446167e-08
+            ],
+            [
+              0.0,
+              1.4901161193847656e-08
+            ],
+            [
+              0.0,
+              1.1175870895385742e-08
+            ],
+            [
+              0.0,
+              1.4901161193847656e-08
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "late_reference_range": [
+            [
+              2.0914520029030603e-09,
+              9.545749746209253e-09
+            ],
+            [
+              1.4336866029432405e-08,
+              2.531050784515543e-07
+            ],
+            [
+              1.6242649220413186e-08,
+              6.619088569470577e-07
+            ],
+            [
+              1.3897070873410133e-08,
+              8.627027801022535e-07
+            ],
+            [
+              9.09752944592418e-09,
+              1.0389002419453064e-06
+            ]
+          ],
+          "float32_output_ulp": [
+            [
+              1.1641532182693481e-10,
+              2.3283064365386963e-10
+            ],
+            [
+              2.3283064365386963e-10,
+              1.862645149230957e-09
+            ],
+            [
+              4.656612873077393e-10,
+              3.725290298461914e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ]
+          ],
+          "endpoint_error_in_output_ulps": [
+            [
+              21459.55778699182,
+              105970.90030145645
+            ],
+            [
+              15342.122394589707,
+              91142.58337813616
+            ],
+            [
+              24717.34056888707,
+              9212.356074810028
+            ],
+            [
+              8835.742485361174,
+              6644.3167015612125
+            ],
+            [
+              27154.28351192549,
+              16467.802263215184
+            ]
+          ],
+          "interpretation": "Finite-window endpoint bias and numerical variation; not a measured decay exponent about the model's own limit."
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "arm": "mse",
+      "ordinary": {
+        "test": {
+          "Q_el_nrmse": 0.00885333151777203,
+          "hydrodynamic_residual_nrmse": 0.01611261204713723,
+          "Q_el_rmse": 2.7311462876197624e-05,
+          "hydrodynamic_residual_rmse": 0.002212539967068523
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.030695446872705028,
+          "hydrodynamic_residual_nrmse": 0.06978814122851944,
+          "Q_el_rmse": 3.618220204719473e-05,
+          "hydrodynamic_residual_rmse": 0.0016568636917239944
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.03418014025272141,
+          "hydrodynamic_residual_nrmse": 0.029344457922352088,
+          "Q_el_rmse": 0.0001408496291635502,
+          "hydrodynamic_residual_rmse": 0.013632727023475347
+        }
+      },
+      "prefix_0_12": {
+        "test": {
+          "Q_el_nrmse": 0.016243599018334647,
+          "hydrodynamic_residual_nrmse": 0.02801330579629524,
+          "Q_el_rmse": 6.985019810177414e-05,
+          "hydrodynamic_residual_rmse": 0.005227262277947216
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.03069497534201495,
+          "hydrodynamic_residual_nrmse": 0.06978814122851944,
+          "Q_el_rmse": 0.00010425654754728686,
+          "hydrodynamic_residual_rmse": 0.004774213142875777
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.05713076865421196,
+          "hydrodynamic_residual_nrmse": 0.04946774042347199,
+          "Q_el_rmse": 0.0003331505529056817,
+          "hydrodynamic_residual_rmse": 0.03301092690954656
+        }
+      },
+      "regimes": {
+        "test": {
+          "recent_change": {
+            "samples": 8032,
+            "Q_el_nrmse": 0.023828953366981653,
+            "hydrodynamic_residual_nrmse": 0.038716427688221595,
+            "Q_el_rmse": 0.00011832230268116417,
+            "hydrodynamic_residual_rmse": 0.007306134478467644
+          },
+          "relaxing": {
+            "samples": 22753,
+            "Q_el_nrmse": 0.01113603614096817,
+            "hydrodynamic_residual_nrmse": 0.021863960190722304,
+            "Q_el_rmse": 4.064099217675749e-05,
+            "hydrodynamic_residual_rmse": 0.003686119633606052
+          },
+          "long_hold": {
+            "samples": 223409,
+            "Q_el_nrmse": 0.00460260528321899,
+            "hydrodynamic_residual_nrmse": 0.01150645364744149,
+            "Q_el_rmse": 1.355021000603519e-05,
+            "hydrodynamic_residual_rmse": 0.0015196567196620393
+          },
+          "long_hold_field_off": {
+            "samples": 175958,
+            "Q_el_nrmse": 475.7931030406527,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 5.658040174940656e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "waveform_ood": {
+          "recent_change": {
+            "samples": 5894,
+            "Q_el_nrmse": 0.030686561894281688,
+            "hydrodynamic_residual_nrmse": 0.06978814122851944,
+            "Q_el_rmse": 0.00011922273274631239,
+            "hydrodynamic_residual_rmse": 0.005461101503719739
+          },
+          "relaxing": {
+            "samples": 4480,
+            "Q_el_nrmse": 0.18194993945409402,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 3.330061087950665e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold": {
+            "samples": 53152,
+            "Q_el_nrmse": 134.66485833848705,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 6.923448117764611e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold_field_off": {
+            "samples": 53152,
+            "Q_el_nrmse": 134.66485833848705,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 6.923448117764611e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "amplitude_ood": {
+          "recent_change": {
+            "samples": 1964,
+            "Q_el_nrmse": 0.079652507706137,
+            "hydrodynamic_residual_nrmse": 0.07242321015888649,
+            "Q_el_rmse": 0.0005447712618104661,
+            "hydrodynamic_residual_rmse": 0.0530063821308272
+          },
+          "relaxing": {
+            "samples": 5634,
+            "Q_el_nrmse": 0.04120730797575465,
+            "hydrodynamic_residual_nrmse": 0.034383183112833796,
+            "Q_el_rmse": 0.0002041740868149103,
+            "hydrodynamic_residual_rmse": 0.020340154702333087
+          },
+          "long_hold": {
+            "samples": 56007,
+            "Q_el_nrmse": 0.02297829919165161,
+            "hydrodynamic_residual_nrmse": 0.019371334580978426,
+            "Q_el_rmse": 8.989253633294623e-05,
+            "hydrodynamic_residual_rmse": 0.008505047613409143
+          },
+          "long_hold_field_off": {
+            "samples": 43209,
+            "Q_el_nrmse": 1094.6649929546434,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.1686396591882674e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        }
+      },
+      "timing_probes": {
+        "overall": {
+          "Q_el_nrmse": 0.00979471979049612,
+          "hydrodynamic_residual_nrmse": 0.032188335949157286,
+          "Q_el_rmse": 4.2327837195968275e-05,
+          "hydrodynamic_residual_rmse": 0.006217674130659051
+        },
+        "regimes": {
+          "recent_change": {
+            "samples": 2059,
+            "Q_el_nrmse": 0.030365636638169862,
+            "hydrodynamic_residual_nrmse": 0.09422324637990817,
+            "Q_el_rmse": 0.0001561943590904779,
+            "hydrodynamic_residual_rmse": 0.01843137812869492
+          },
+          "relaxing": {
+            "samples": 13172,
+            "Q_el_nrmse": 0.011158045649057131,
+            "hydrodynamic_residual_nrmse": 0.05117653299394878,
+            "Q_el_rmse": 5.6651700485289616e-05,
+            "hydrodynamic_residual_rmse": 0.011262501958100551
+          },
+          "long_hold": {
+            "samples": 32626,
+            "Q_el_nrmse": 0.005263771936931098,
+            "hydrodynamic_residual_nrmse": 0.00793021379567162,
+            "Q_el_rmse": 2.6094321605743004e-05,
+            "hydrodynamic_residual_rmse": 0.001795498172388067
+          },
+          "long_hold_field_off": {
+            "samples": 10434,
+            "Q_el_nrmse": 1007.1567760527385,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.7317592989141955e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "families": {
+          "late_pulse": {
+            "Q_el_nrmse": 0.018526098481945943,
+            "hydrodynamic_residual_nrmse": 0.07863394354532176,
+            "Q_el_rmse": 3.49156513066254e-05,
+            "hydrodynamic_residual_rmse": 0.004708450716372774
+          },
+          "late_reversal": {
+            "Q_el_nrmse": 0.008899896056674109,
+            "hydrodynamic_residual_nrmse": 0.024580039339351416,
+            "Q_el_rmse": 4.34683826695736e-05,
+            "hydrodynamic_residual_rmse": 0.005841654960431439
+          },
+          "late_step": {
+            "Q_el_nrmse": 0.007792419405716819,
+            "hydrodynamic_residual_nrmse": 0.03150582553374865,
+            "Q_el_rmse": 3.793187051574182e-05,
+            "hydrodynamic_residual_rmse": 0.007060540252495736
+          },
+          "late_switching": {
+            "Q_el_nrmse": 0.010534971263072124,
+            "hydrodynamic_residual_nrmse": 0.035278660986748235,
+            "Q_el_rmse": 5.117766512704989e-05,
+            "hydrodynamic_residual_rmse": 0.006963635322007437
+          }
+        }
+      },
+      "tails": {
+        "within_training": {
+          "relative_rmse": [
+            62.225053380403075,
+            75.58221857988934
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "beyond_training": {
+          "relative_rmse": [
+            2085.5665035445213,
+            2455.5133442835518
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "endpoint_diagnostic": {
+          "fields": [
+            0.4,
+            1.2,
+            2.2,
+            3.0,
+            4.8
+          ],
+          "elapsed_interval": [
+            500.0,
+            1000.0
+          ],
+          "endpoint_stationary_departure": [
+            [
+              -1.8420408052694827e-06,
+              7.825531469306604e-05
+            ],
+            [
+              2.5887437665313758e-05,
+              0.0001640439096763438
+            ],
+            [
+              2.3997002207972948e-05,
+              0.00021207208336304628
+            ],
+            [
+              8.492137701414208e-06,
+              0.0005700385841821559
+            ],
+            [
+              -5.9781484372305356e-05,
+              0.0010181564250907882
+            ]
+          ],
+          "reference_endpoint_departure": [
+            [
+              -1.2302561723260413e-09,
+              5.615186749602374e-09
+            ],
+            [
+              -8.423685945828374e-09,
+              1.486763690564108e-07
+            ],
+            [
+              -9.541208143871993e-09,
+              3.88586251509615e-07
+            ],
+            [
+              -8.16335169948057e-09,
+              5.06393162194585e-07
+            ],
+            [
+              -5.344222657292785e-09,
+              6.097544809624544e-07
+            ]
+          ],
+          "endpoint_prediction_error": [
+            [
+              -1.8408105490971566e-06,
+              7.824969950631644e-05
+            ],
+            [
+              2.5895861351259587e-05,
+              0.0001638952333072874
+            ],
+            [
+              2.400654341611682e-05,
+              0.00021168349711153667
+            ],
+            [
+              8.500301053113689e-06,
+              0.0005695321910199613
+            ],
+            [
+              -5.977614014964806e-05,
+              0.0010175466706098257
+            ]
+          ],
+          "late_prediction_range": [
+            [
+              8.149072527885437e-10,
+              1.0710209608078003e-08
+            ],
+            [
+              6.984919309616089e-10,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              9.313225746154785e-10,
+              1.4901161193847656e-08
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "late_reference_range": [
+            [
+              2.0914520029030603e-09,
+              9.545749746209253e-09
+            ],
+            [
+              1.4336866029432405e-08,
+              2.531050784515543e-07
+            ],
+            [
+              1.6242649220413186e-08,
+              6.619088569470577e-07
+            ],
+            [
+              1.3897070873410133e-08,
+              8.627027801022535e-07
+            ],
+            [
+              9.09752944592418e-09,
+              1.0389002419453064e-06
+            ]
+          ],
+          "float32_output_ulp": [
+            [
+              1.1641532182693481e-10,
+              2.3283064365386963e-10
+            ],
+            [
+              2.3283064365386963e-10,
+              1.862645149230957e-09
+            ],
+            [
+              4.656612873077393e-10,
+              3.725290298461914e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ]
+          ],
+          "endpoint_error_in_output_ulps": [
+            [
+              15812.44221300818,
+              336079.90030145645
+            ],
+            [
+              111221.8776054103,
+              87990.58337813616
+            ],
+            [
+              51553.65943111293,
+              56823.35607481003
+            ],
+            [
+              18254.257514638826,
+              76441.31670156121
+            ],
+            [
+              128368.28351192549,
+              136572.80226321518
+            ]
+          ],
+          "interpretation": "Finite-window endpoint bias and numerical variation; not a measured decay exponent about the model's own limit."
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "arm": "mixed",
+      "ordinary": {
+        "test": {
+          "Q_el_nrmse": 0.009957546446630746,
+          "hydrodynamic_residual_nrmse": 0.016426834431017643,
+          "Q_el_rmse": 3.071783311957209e-05,
+          "hydrodynamic_residual_rmse": 0.0022556881283256223
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.028551046334503838,
+          "hydrodynamic_residual_nrmse": 0.06571881725336906,
+          "Q_el_rmse": 3.365449382176726e-05,
+          "hydrodynamic_residual_rmse": 0.001560252504986536
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.046596420535880555,
+          "hydrodynamic_residual_nrmse": 0.032118123231843036,
+          "Q_el_rmse": 0.00019201467589955427,
+          "hydrodynamic_residual_rmse": 0.014921304993422134
+        }
+      },
+      "prefix_0_12": {
+        "test": {
+          "Q_el_nrmse": 0.019726391057184225,
+          "hydrodynamic_residual_nrmse": 0.03430016363603612,
+          "Q_el_rmse": 8.482678756241856e-05,
+          "hydrodynamic_residual_rmse": 0.00640038533137993
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.028550650723303712,
+          "hydrodynamic_residual_nrmse": 0.06571881725336905,
+          "Q_el_rmse": 9.697327466381007e-05,
+          "hydrodynamic_residual_rmse": 0.0044958303164702625
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.06818798163253537,
+          "hydrodynamic_residual_nrmse": 0.05717849471746455,
+          "Q_el_rmse": 0.00039762923408044896,
+          "hydrodynamic_residual_rmse": 0.03815648529239285
+        }
+      },
+      "regimes": {
+        "test": {
+          "recent_change": {
+            "samples": 8032,
+            "Q_el_nrmse": 0.02761964526788177,
+            "hydrodynamic_residual_nrmse": 0.04508725725700825,
+            "Q_el_rmse": 0.0001371449252093879,
+            "hydrodynamic_residual_rmse": 0.00850836671806845
+          },
+          "relaxing": {
+            "samples": 22753,
+            "Q_el_nrmse": 0.015160601301125539,
+            "hydrodynamic_residual_nrmse": 0.031322657998251555,
+            "Q_el_rmse": 5.532865294925443e-05,
+            "hydrodynamic_residual_rmse": 0.005280793763660268
+          },
+          "long_hold": {
+            "samples": 223409,
+            "Q_el_nrmse": 0.003289586089198043,
+            "hydrodynamic_residual_nrmse": 0.004731803691353202,
+            "Q_el_rmse": 9.684641545101327e-06,
+            "hydrodynamic_residual_rmse": 0.0006249290612043115
+          },
+          "long_hold_field_off": {
+            "samples": 175958,
+            "Q_el_nrmse": 204.67146754675647,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.4339137718536154e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "waveform_ood": {
+          "recent_change": {
+            "samples": 5894,
+            "Q_el_nrmse": 0.028539837768877512,
+            "hydrodynamic_residual_nrmse": 0.06571881725336906,
+            "Q_el_rmse": 0.00011088232897071651,
+            "hydrodynamic_residual_rmse": 0.005142666438841769
+          },
+          "relaxing": {
+            "samples": 4480,
+            "Q_el_nrmse": 0.1967116158007627,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 3.6002303671625744e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold": {
+            "samples": 53152,
+            "Q_el_nrmse": 78.24517036145463,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.0227746432668214e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold_field_off": {
+            "samples": 53152,
+            "Q_el_nrmse": 78.24517036145463,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.0227746432668214e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "amplitude_ood": {
+          "recent_change": {
+            "samples": 1964,
+            "Q_el_nrmse": 0.091081839402594,
+            "hydrodynamic_residual_nrmse": 0.07924081481558877,
+            "Q_el_rmse": 0.0006229404447933832,
+            "hydrodynamic_residual_rmse": 0.057996171410496775
+          },
+          "relaxing": {
+            "samples": 5634,
+            "Q_el_nrmse": 0.05377074979579256,
+            "hydrodynamic_residual_nrmse": 0.046232629459612894,
+            "Q_el_rmse": 0.00026642346409448784,
+            "hydrodynamic_residual_rmse": 0.02734996444099338
+          },
+          "long_hold": {
+            "samples": 56007,
+            "Q_el_nrmse": 0.03739763715662599,
+            "hydrodynamic_residual_nrmse": 0.01783987022759691,
+            "Q_el_rmse": 0.00014630188373949483,
+            "hydrodynamic_residual_rmse": 0.007832653195291011
+          },
+          "long_hold_field_off": {
+            "samples": 43209,
+            "Q_el_nrmse": 102.02875441985948,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.089235972284065e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        }
+      },
+      "timing_probes": {
+        "overall": {
+          "Q_el_nrmse": 0.009157150291084812,
+          "hydrodynamic_residual_nrmse": 0.034764423885142746,
+          "Q_el_rmse": 3.957258349301064e-05,
+          "hydrodynamic_residual_rmse": 0.006715285294627873
+        },
+        "regimes": {
+          "recent_change": {
+            "samples": 2059,
+            "Q_el_nrmse": 0.03235792891627326,
+            "hydrodynamic_residual_nrmse": 0.09999254179987807,
+            "Q_el_rmse": 0.0001664422856927513,
+            "hydrodynamic_residual_rmse": 0.019559932593830476
+          },
+          "relaxing": {
+            "samples": 13172,
+            "Q_el_nrmse": 0.00978927216720441,
+            "hydrodynamic_residual_nrmse": 0.05709171839557742,
+            "Q_el_rmse": 4.9702155039337806e-05,
+            "hydrodynamic_residual_rmse": 0.012564266326864014
+          },
+          "long_hold": {
+            "samples": 32626,
+            "Q_el_nrmse": 0.003652077258080634,
+            "hydrodynamic_residual_nrmse": 0.0034950032908501543,
+            "Q_el_rmse": 1.8104598687635655e-05,
+            "hydrodynamic_residual_rmse": 0.0007913118338167413
+          },
+          "long_hold_field_off": {
+            "samples": 10434,
+            "Q_el_nrmse": 375.8333417310871,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 6.462279754852442e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "families": {
+          "late_pulse": {
+            "Q_el_nrmse": 0.016523591817983935,
+            "hydrodynamic_residual_nrmse": 0.08244903674121005,
+            "Q_el_rmse": 3.1141579583632646e-05,
+            "hydrodynamic_residual_rmse": 0.004936891227954847
+          },
+          "late_reversal": {
+            "Q_el_nrmse": 0.008366760914664054,
+            "hydrodynamic_residual_nrmse": 0.02780244104838073,
+            "Q_el_rmse": 4.086447334075489e-05,
+            "hydrodynamic_residual_rmse": 0.006607486075189555
+          },
+          "late_step": {
+            "Q_el_nrmse": 0.0065899118845259615,
+            "hydrodynamic_residual_nrmse": 0.031993738179593806,
+            "Q_el_rmse": 3.207831500067887e-05,
+            "hydrodynamic_residual_rmse": 0.007169882788910192
+          },
+          "late_switching": {
+            "Q_el_nrmse": 0.010486759685213976,
+            "hydrodynamic_residual_nrmse": 0.039548654843262504,
+            "Q_el_rmse": 5.0943458889058544e-05,
+            "hydrodynamic_residual_rmse": 0.007806487040646838
+          }
+        }
+      },
+      "tails": {
+        "within_training": {
+          "relative_rmse": [
+            88.91821288433107,
+            8.643431361865616
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "beyond_training": {
+          "relative_rmse": [
+            2880.5672571593695,
+            272.64431421077273
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "endpoint_diagnostic": {
+          "fields": [
+            0.4,
+            1.2,
+            2.2,
+            3.0,
+            4.8
+          ],
+          "elapsed_interval": [
+            500.0,
+            1000.0
+          ],
+          "endpoint_stationary_departure": [
+            [
+              -1.8956140851725343e-05,
+              4.992824360939424e-06
+            ],
+            [
+              -2.54340241314468e-05,
+              -0.00014745927714559376
+            ],
+            [
+              -3.3538243806622084e-05,
+              -0.0002793980151324371
+            ],
+            [
+              -2.444222250471296e-05,
+              -0.00014419642358075302
+            ],
+            [
+              1.427030184180788e-05,
+              0.0001815530816040023
+            ]
+          ],
+          "reference_endpoint_departure": [
+            [
+              -1.2302561723260413e-09,
+              5.615186749602374e-09
+            ],
+            [
+              -8.423685945828374e-09,
+              1.486763690564108e-07
+            ],
+            [
+              -9.541208143871993e-09,
+              3.88586251509615e-07
+            ],
+            [
+              -8.16335169948057e-09,
+              5.06393162194585e-07
+            ],
+            [
+              -5.344222657292785e-09,
+              6.097544809624544e-07
+            ]
+          ],
+          "endpoint_prediction_error": [
+            [
+              -1.8954910595553017e-05,
+              4.987209174189822e-06
+            ],
+            [
+              -2.5425600445500973e-05,
+              -0.00014760795351465017
+            ],
+            [
+              -3.352870259847821e-05,
+              -0.00027978660138394673
+            ],
+            [
+              -2.4434059153013478e-05,
+              -0.0001447028167429476
+            ],
+            [
+              1.4275646064465172e-05,
+              0.00018094332712303984
+            ]
+          ],
+          "late_prediction_range": [
+            [
+              2.3283064365386963e-10,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "late_reference_range": [
+            [
+              2.0914520029030603e-09,
+              9.545749746209253e-09
+            ],
+            [
+              1.4336866029432405e-08,
+              2.531050784515543e-07
+            ],
+            [
+              1.6242649220413186e-08,
+              6.619088569470577e-07
+            ],
+            [
+              1.3897070873410133e-08,
+              8.627027801022535e-07
+            ],
+            [
+              9.09752944592418e-09,
+              1.0389002419453064e-06
+            ]
+          ],
+          "float32_output_ulp": [
+            [
+              1.1641532182693481e-10,
+              2.3283064365386963e-10
+            ],
+            [
+              2.3283064365386963e-10,
+              1.862645149230957e-09
+            ],
+            [
+              4.656612873077393e-10,
+              3.725290298461914e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ]
+          ],
+          "endpoint_error_in_output_ulps": [
+            [
+              162821.44221300818,
+              21419.90030145645
+            ],
+            [
+              109202.1223945897,
+              79246.41662186384
+            ],
+            [
+              72002.34056888707,
+              75104.64392518997
+            ],
+            [
+              52471.742485361174,
+              19421.683298438787
+            ],
+            [
+              30656.71648807451,
+              24285.802263215184
+            ]
+          ],
+          "interpretation": "Finite-window endpoint bias and numerical variation; not a measured decay exponent about the model's own limit."
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "arm": "mse",
+      "ordinary": {
+        "test": {
+          "Q_el_nrmse": 0.0058626234158509274,
+          "hydrodynamic_residual_nrmse": 0.007841029723722154,
+          "Q_el_rmse": 1.8085488096511878e-05,
+          "hydrodynamic_residual_rmse": 0.0010767088288326221
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.02933181538792965,
+          "hydrodynamic_residual_nrmse": 0.05087972675403016,
+          "Q_el_rmse": 3.4574823920247435e-05,
+          "hydrodynamic_residual_rmse": 0.0012079526753341922
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.040465977351993684,
+          "hydrodynamic_residual_nrmse": 0.03693856712001698,
+          "Q_el_rmse": 0.0001667523263985182,
+          "hydrodynamic_residual_rmse": 0.01716076689908572
+        }
+      },
+      "prefix_0_12": {
+        "test": {
+          "Q_el_nrmse": 0.011721888952136892,
+          "hydrodynamic_residual_nrmse": 0.015252592623609606,
+          "Q_el_rmse": 5.0406087007539504e-05,
+          "hydrodynamic_residual_rmse": 0.002846122576252127
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.029330909375100758,
+          "hydrodynamic_residual_nrmse": 0.05087972675403015,
+          "Q_el_rmse": 9.962345021612315e-05,
+          "hydrodynamic_residual_rmse": 0.0034806867742703516
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.03932155761985776,
+          "hydrodynamic_residual_nrmse": 0.041414540120316555,
+          "Q_el_rmse": 0.00022929848435012152,
+          "hydrodynamic_residual_rmse": 0.027636846664125407
+        }
+      },
+      "regimes": {
+        "test": {
+          "recent_change": {
+            "samples": 8032,
+            "Q_el_nrmse": 0.018942966089472806,
+            "hydrodynamic_residual_nrmse": 0.022625221710216928,
+            "Q_el_rmse": 9.406100774964667e-05,
+            "hydrodynamic_residual_rmse": 0.004269580699726576
+          },
+          "relaxing": {
+            "samples": 22753,
+            "Q_el_nrmse": 0.00487505890955111,
+            "hydrodynamic_residual_nrmse": 0.012193574802029148,
+            "Q_el_rmse": 1.7791539870763504e-05,
+            "hydrodynamic_residual_rmse": 0.0020557563721084874
+          },
+          "long_hold": {
+            "samples": 223409,
+            "Q_el_nrmse": 0.0016869498479139553,
+            "hydrodynamic_residual_nrmse": 0.0037347679587082286,
+            "Q_el_rmse": 4.966431684295187e-06,
+            "hydrodynamic_residual_rmse": 0.0004932506051585602
+          },
+          "long_hold_field_off": {
+            "samples": 175958,
+            "Q_el_nrmse": 38.645481033984275,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.595646361261098e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "waveform_ood": {
+          "recent_change": {
+            "samples": 5894,
+            "Q_el_nrmse": 0.029312191758765763,
+            "hydrodynamic_residual_nrmse": 0.05087972675403015,
+            "Q_el_rmse": 0.00011388306113612583,
+            "hydrodynamic_residual_rmse": 0.003981469450166903
+          },
+          "relaxing": {
+            "samples": 4480,
+            "Q_el_nrmse": 0.26284431386890744,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.8105958398781165e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold": {
+            "samples": 53152,
+            "Q_el_nrmse": 4.724500366150133,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.428980624268174e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold_field_off": {
+            "samples": 53152,
+            "Q_el_nrmse": 4.724500366150133,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.428980624268174e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "amplitude_ood": {
+          "recent_change": {
+            "samples": 1964,
+            "Q_el_nrmse": 0.037938532250029224,
+            "hydrodynamic_residual_nrmse": 0.05968317736493015,
+            "Q_el_rmse": 0.00025947484492686083,
+            "hydrodynamic_residual_rmse": 0.04368198122186171
+          },
+          "relaxing": {
+            "samples": 5634,
+            "Q_el_nrmse": 0.03975182372367476,
+            "hydrodynamic_residual_nrmse": 0.029874779570351746,
+            "Q_el_rmse": 0.00019696244930108038,
+            "hydrodynamic_residual_rmse": 0.017673105953132113
+          },
+          "long_hold": {
+            "samples": 56007,
+            "Q_el_nrmse": 0.04084089858505159,
+            "hydrodynamic_residual_nrmse": 0.035163865176281305,
+            "Q_el_rmse": 0.00015977213671500818,
+            "hydrodynamic_residual_rmse": 0.015438809667220485
+          },
+          "long_hold_field_off": {
+            "samples": 43209,
+            "Q_el_nrmse": 95.36177033126863,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.0180607537171984e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        }
+      },
+      "timing_probes": {
+        "overall": {
+          "Q_el_nrmse": 0.0051833408248018195,
+          "hydrodynamic_residual_nrmse": 0.015124336835130845,
+          "Q_el_rmse": 2.239978388930658e-05,
+          "hydrodynamic_residual_rmse": 0.0029214992049201856
+        },
+        "regimes": {
+          "recent_change": {
+            "samples": 2059,
+            "Q_el_nrmse": 0.017491228936776952,
+            "hydrodynamic_residual_nrmse": 0.034524320057569245,
+            "Q_el_rmse": 8.99711514709529e-05,
+            "hydrodynamic_residual_rmse": 0.00675343741661648
+          },
+          "relaxing": {
+            "samples": 13172,
+            "Q_el_nrmse": 0.00557311561744402,
+            "hydrodynamic_residual_nrmse": 0.026212454268513832,
+            "Q_el_rmse": 2.8295858133185522e-05,
+            "hydrodynamic_residual_rmse": 0.005768616986239872
+          },
+          "long_hold": {
+            "samples": 32626,
+            "Q_el_nrmse": 0.002475794538303076,
+            "hydrodynamic_residual_nrmse": 0.0029230943109589355,
+            "Q_el_rmse": 1.227336208450707e-05,
+            "hydrodynamic_residual_rmse": 0.0006618245898880245
+          },
+          "long_hold_field_off": {
+            "samples": 10434,
+            "Q_el_nrmse": 15.266465736453574,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.6249978781132725e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "families": {
+          "late_pulse": {
+            "Q_el_nrmse": 0.01001299565351648,
+            "hydrodynamic_residual_nrmse": 0.035026904895991084,
+            "Q_el_rmse": 1.887122996315924e-05,
+            "hydrodynamic_residual_rmse": 0.002097344327577758
+          },
+          "late_reversal": {
+            "Q_el_nrmse": 0.0047036542471874795,
+            "hydrodynamic_residual_nrmse": 0.012416713015306056,
+            "Q_el_rmse": 2.2973329290602667e-05,
+            "hydrodynamic_residual_rmse": 0.0029509372290544987
+          },
+          "late_step": {
+            "Q_el_nrmse": 0.00384403006867958,
+            "hydrodynamic_residual_nrmse": 0.014397270052594847,
+            "Q_el_rmse": 1.87119356944262e-05,
+            "hydrodynamic_residual_rmse": 0.0032264669473113287
+          },
+          "late_switching": {
+            "Q_el_nrmse": 0.005723128801695776,
+            "hydrodynamic_residual_nrmse": 0.016512510543734704,
+            "Q_el_rmse": 2.780229409061991e-05,
+            "hydrodynamic_residual_rmse": 0.00325939529622635
+          }
+        }
+      },
+      "tails": {
+        "within_training": {
+          "relative_rmse": [
+            91.77715095795519,
+            54.288527120327345
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "beyond_training": {
+          "relative_rmse": [
+            2947.413963372324,
+            1760.5978651029375
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "endpoint_diagnostic": {
+          "fields": [
+            0.4,
+            1.2,
+            2.2,
+            3.0,
+            4.8
+          ],
+          "elapsed_interval": [
+            500.0,
+            1000.0
+          ],
+          "endpoint_stationary_departure": [
+            [
+              2.0325299115728137e-05,
+              5.661021390578405e-05
+            ],
+            [
+              1.375696113094715e-05,
+              0.00011401512361314953
+            ],
+            [
+              -1.3496647662184294e-05,
+              -3.5194060197363264e-05
+            ],
+            [
+              -5.058605759241004e-06,
+              0.00020654710860003311
+            ],
+            [
+              1.6654487632823504e-05,
+              0.00034650893601989585
+            ]
+          ],
+          "reference_endpoint_departure": [
+            [
+              -1.2302561723260413e-09,
+              5.615186749602374e-09
+            ],
+            [
+              -8.423685945828374e-09,
+              1.486763690564108e-07
+            ],
+            [
+              -9.541208143871993e-09,
+              3.88586251509615e-07
+            ],
+            [
+              -8.16335169948057e-09,
+              5.06393162194585e-07
+            ],
+            [
+              -5.344222657292785e-09,
+              6.097544809624544e-07
+            ]
+          ],
+          "endpoint_prediction_error": [
+            [
+              2.0326529371900463e-05,
+              5.660459871903445e-05
+            ],
+            [
+              1.3765384816892979e-05,
+              0.00011386644724409312
+            ],
+            [
+              -1.3487106454040422e-05,
+              -3.558264644887288e-05
+            ],
+            [
+              -5.0504424075415236e-06,
+              0.00020604071543783853
+            ],
+            [
+              1.6659831855480797e-05,
+              0.0003458991815389334
+            ]
+          ],
+          "late_prediction_range": [
+            [
+              2.3283064365386963e-10,
+              0.0
+            ],
+            [
+              4.656612873077393e-10,
+              1.1175870895385742e-08
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              4.656612873077393e-10,
+              0.0
+            ]
+          ],
+          "late_reference_range": [
+            [
+              2.0914520029030603e-09,
+              9.545749746209253e-09
+            ],
+            [
+              1.4336866029432405e-08,
+              2.531050784515543e-07
+            ],
+            [
+              1.6242649220413186e-08,
+              6.619088569470577e-07
+            ],
+            [
+              1.3897070873410133e-08,
+              8.627027801022535e-07
+            ],
+            [
+              9.09752944592418e-09,
+              1.0389002419453064e-06
+            ]
+          ],
+          "float32_output_ulp": [
+            [
+              1.1641532182693481e-10,
+              2.3283064365386963e-10
+            ],
+            [
+              2.3283064365386963e-10,
+              1.862645149230957e-09
+            ],
+            [
+              4.656612873077393e-10,
+              3.725290298461914e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ]
+          ],
+          "endpoint_error_in_output_ulps": [
+            [
+              174603.55778699182,
+              243114.90030145645
+            ],
+            [
+              59121.87760541029,
+              61131.58337813616
+            ],
+            [
+              28963.34056888707,
+              9551.643925189972
+            ],
+            [
+              10845.742485361174,
+              27654.316701561213
+            ],
+            [
+              35776.71648807451,
+              46425.802263215184
+            ]
+          ],
+          "interpretation": "Finite-window endpoint bias and numerical variation; not a measured decay exponent about the model's own limit."
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "arm": "mixed",
+      "ordinary": {
+        "test": {
+          "Q_el_nrmse": 0.0060362495653412925,
+          "hydrodynamic_residual_nrmse": 0.007892073827286423,
+          "Q_el_rmse": 1.8621103884379333e-05,
+          "hydrodynamic_residual_rmse": 0.0010837180659996769
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.030008423108547823,
+          "hydrodynamic_residual_nrmse": 0.051089392191520734,
+          "Q_el_rmse": 3.5372374037553845e-05,
+          "hydrodynamic_residual_rmse": 0.0012129304128791721
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.0355236673912334,
+          "hydrodynamic_residual_nrmse": 0.03976749210319715,
+          "Q_el_rmse": 0.00014638604001006547,
+          "hydrodynamic_residual_rmse": 0.018475017179926948
+        }
+      },
+      "prefix_0_12": {
+        "test": {
+          "Q_el_nrmse": 0.012293787388305676,
+          "hydrodynamic_residual_nrmse": 0.015452681182493024,
+          "Q_el_rmse": 5.286534612957242e-05,
+          "hydrodynamic_residual_rmse": 0.0028834589543185254
+        },
+        "waveform_ood": {
+          "Q_el_nrmse": 0.030007615616162997,
+          "hydrodynamic_residual_nrmse": 0.05108939219152073,
+          "Q_el_rmse": 0.00010192190641655155,
+          "hydrodynamic_residual_rmse": 0.0034950300060809913
+        },
+        "amplitude_ood": {
+          "Q_el_nrmse": 0.03568162627379743,
+          "hydrodynamic_residual_nrmse": 0.0423642654939272,
+          "Q_el_rmse": 0.00020807270410868378,
+          "hydrodynamic_residual_rmse": 0.028270619596222523
+        }
+      },
+      "regimes": {
+        "test": {
+          "recent_change": {
+            "samples": 8032,
+            "Q_el_nrmse": 0.01977937499945235,
+            "hydrodynamic_residual_nrmse": 0.022992605968188792,
+            "Q_el_rmse": 9.821418337123956e-05,
+            "hydrodynamic_residual_rmse": 0.004338909378901982
+          },
+          "relaxing": {
+            "samples": 22753,
+            "Q_el_nrmse": 0.005403767881300408,
+            "hydrodynamic_residual_nrmse": 0.012345428082354231,
+            "Q_el_rmse": 1.972106460583469e-05,
+            "hydrodynamic_residual_rmse": 0.002081357834659233
+          },
+          "long_hold": {
+            "samples": 223409,
+            "Q_el_nrmse": 0.00113290195474128,
+            "hydrodynamic_residual_nrmse": 0.0036187330532116667,
+            "Q_el_rmse": 3.3352978277241762e-06,
+            "hydrodynamic_residual_rmse": 0.0004779258813769276
+          },
+          "long_hold_field_off": {
+            "samples": 175958,
+            "Q_el_nrmse": 38.80841935509572,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.615022673380678e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "waveform_ood": {
+          "recent_change": {
+            "samples": 5894,
+            "Q_el_nrmse": 0.029992451799696354,
+            "hydrodynamic_residual_nrmse": 0.051089392191520734,
+            "Q_el_rmse": 0.00011652599198439973,
+            "hydrodynamic_residual_rmse": 0.00399787630978233
+          },
+          "relaxing": {
+            "samples": 4480,
+            "Q_el_nrmse": 0.24023694089546496,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 4.396834047675694e-06,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold": {
+            "samples": 53152,
+            "Q_el_nrmse": 4.480118178152934,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.3033377935861298e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          },
+          "long_hold_field_off": {
+            "samples": 53152,
+            "Q_el_nrmse": 4.480118178152934,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.3033377935861298e-09,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "amplitude_ood": {
+          "recent_change": {
+            "samples": 1964,
+            "Q_el_nrmse": 0.03690663055863359,
+            "hydrodynamic_residual_nrmse": 0.06012421038307154,
+            "Q_el_rmse": 0.00025241730960656804,
+            "hydrodynamic_residual_rmse": 0.04400477228070358
+          },
+          "relaxing": {
+            "samples": 5634,
+            "Q_el_nrmse": 0.03478340234506646,
+            "hydrodynamic_residual_nrmse": 0.030902731188166034,
+            "Q_el_rmse": 0.0001723449009165587,
+            "hydrodynamic_residual_rmse": 0.018281214133932043
+          },
+          "long_hold": {
+            "samples": 56007,
+            "Q_el_nrmse": 0.03549074969894148,
+            "hydrodynamic_residual_nrmse": 0.03870023798095062,
+            "Q_el_rmse": 0.00013884202134310732,
+            "hydrodynamic_residual_rmse": 0.016991465678438816
+          },
+          "long_hold_field_off": {
+            "samples": 43209,
+            "Q_el_nrmse": 96.29515469991146,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 1.0280253547365315e-07,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        }
+      },
+      "timing_probes": {
+        "overall": {
+          "Q_el_nrmse": 0.004833356443979708,
+          "hydrodynamic_residual_nrmse": 0.01518207604354343,
+          "Q_el_rmse": 2.0887327973319654e-05,
+          "hydrodynamic_residual_rmse": 0.002932652424615628
+        },
+        "regimes": {
+          "recent_change": {
+            "samples": 2059,
+            "Q_el_nrmse": 0.01808189101244127,
+            "hydrodynamic_residual_nrmse": 0.03500446278776943,
+            "Q_el_rmse": 9.300939122356425e-05,
+            "hydrodynamic_residual_rmse": 0.006847360015933231
+          },
+          "relaxing": {
+            "samples": 13172,
+            "Q_el_nrmse": 0.005121260146620312,
+            "hydrodynamic_residual_nrmse": 0.026274926893286994,
+            "Q_el_rmse": 2.6001694656814788e-05,
+            "hydrodynamic_residual_rmse": 0.005782365437291033
+          },
+          "long_hold": {
+            "samples": 32626,
+            "Q_el_nrmse": 0.0012328153397542594,
+            "hydrodynamic_residual_nrmse": 0.0028672081455183886,
+            "Q_el_rmse": 6.1114881764418795e-06,
+            "hydrodynamic_residual_rmse": 0.0006491712730297769
+          },
+          "long_hold_field_off": {
+            "samples": 10434,
+            "Q_el_nrmse": 14.87987629452567,
+            "hydrodynamic_residual_nrmse": null,
+            "Q_el_rmse": 2.5585256190927327e-08,
+            "hydrodynamic_residual_rmse": 0.0
+          }
+        },
+        "families": {
+          "late_pulse": {
+            "Q_el_nrmse": 0.009835904237747094,
+            "hydrodynamic_residual_nrmse": 0.035124330754706314,
+            "Q_el_rmse": 1.853747042234571e-05,
+            "hydrodynamic_residual_rmse": 0.0021031780023698225
+          },
+          "late_reversal": {
+            "Q_el_nrmse": 0.003987774390995,
+            "hydrodynamic_residual_nrmse": 0.012469374248552259,
+            "Q_el_rmse": 1.9476868282939744e-05,
+            "hydrodynamic_residual_rmse": 0.002963452618072718
+          },
+          "late_step": {
+            "Q_el_nrmse": 0.003181679715262064,
+            "hydrodynamic_residual_nrmse": 0.014449959429443495,
+            "Q_el_rmse": 1.5487752480743303e-05,
+            "hydrodynamic_residual_rmse": 0.0032382747783970523
+          },
+          "late_switching": {
+            "Q_el_nrmse": 0.005757446232742466,
+            "hydrodynamic_residual_nrmse": 0.016579451791035062,
+            "Q_el_rmse": 2.796900417935878e-05,
+            "hydrodynamic_residual_rmse": 0.003272608791896583
+          }
+        }
+      },
+      "tails": {
+        "within_training": {
+          "relative_rmse": [
+            9.166586080555902,
+            76.8221453566173
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "beyond_training": {
+          "relative_rmse": [
+            312.4427813509631,
+            2486.5042855407523
+          ],
+          "reference_fraction_above_floor": [
+            1.0,
+            1.0
+          ],
+          "floor": 1e-12
+        },
+        "endpoint_diagnostic": {
+          "fields": [
+            0.4,
+            1.2,
+            2.2,
+            3.0,
+            4.8
+          ],
+          "elapsed_interval": [
+            500.0,
+            1000.0
+          ],
+          "endpoint_stationary_departure": [
+            [
+              4.601885991799802e-07,
+              8.00068996252741e-05
+            ],
+            [
+              -6.83644363895031e-06,
+              0.00017104559279230297
+            ],
+            [
+              -1.4159749335310515e-05,
+              1.6285726437081927e-05
+            ],
+            [
+              -3.3277427543181373e-06,
+              0.00022964390845049698
+            ],
+            [
+              -1.5025772818798647e-06,
+              0.0003470900813064559
+            ]
+          ],
+          "reference_endpoint_departure": [
+            [
+              -1.2302561723260413e-09,
+              5.615186749602374e-09
+            ],
+            [
+              -8.423685945828374e-09,
+              1.486763690564108e-07
+            ],
+            [
+              -9.541208143871993e-09,
+              3.88586251509615e-07
+            ],
+            [
+              -8.16335169948057e-09,
+              5.06393162194585e-07
+            ],
+            [
+              -5.344222657292785e-09,
+              6.097544809624544e-07
+            ]
+          ],
+          "endpoint_prediction_error": [
+            [
+              4.6141885535230624e-07,
+              8.00012844385245e-05
+            ],
+            [
+              -6.828019953004482e-06,
+              0.00017089691642324656
+            ],
+            [
+              -1.4150208127166643e-05,
+              1.589714018557231e-05
+            ],
+            [
+              -3.3195794026186567e-06,
+              0.0002291375152883024
+            ],
+            [
+              -1.4972330592225719e-06,
+              0.00034648032682549346
+            ]
+          ],
+          "late_prediction_range": [
+            [
+              2.3283064365386963e-10,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              4.656612873077393e-10,
+              0.0
+            ]
+          ],
+          "late_reference_range": [
+            [
+              2.0914520029030603e-09,
+              9.545749746209253e-09
+            ],
+            [
+              1.4336866029432405e-08,
+              2.531050784515543e-07
+            ],
+            [
+              1.6242649220413186e-08,
+              6.619088569470577e-07
+            ],
+            [
+              1.3897070873410133e-08,
+              8.627027801022535e-07
+            ],
+            [
+              9.09752944592418e-09,
+              1.0389002419453064e-06
+            ]
+          ],
+          "float32_output_ulp": [
+            [
+              1.1641532182693481e-10,
+              2.3283064365386963e-10
+            ],
+            [
+              2.3283064365386963e-10,
+              1.862645149230957e-09
+            ],
+            [
+              4.656612873077393e-10,
+              3.725290298461914e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ],
+            [
+              4.656612873077393e-10,
+              7.450580596923828e-09
+            ]
+          ],
+          "endpoint_error_in_output_ulps": [
+            [
+              3963.5577869918197,
+              343602.90030145645
+            ],
+            [
+              29326.122394589707,
+              91749.58337813616
+            ],
+            [
+              30387.34056888707,
+              4267.356074810028
+            ],
+            [
+              7128.742485361174,
+              30754.316701561213
+            ],
+            [
+              3215.2835119254887,
+              46503.802263215184
+            ]
+          ],
+          "interpretation": "Finite-window endpoint bias and numerical variation; not a measured decay exponent about the model's own limit."
+        }
+      }
+    }
+  ],
+  "uncertainty": "Sample standard deviations across training seeds; not confidence intervals or dataset uncertainty."
+}
