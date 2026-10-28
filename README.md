@@ -8,6 +8,28 @@ A reproducible PyTorch study of field-to-current surrogates, built on my coautho
 
 A 3,522-parameter GRU predicts ordinary currents well, but misses their small algebraic relaxation. A controlled loss experiment and a physical reduction examine that discrepancy.
 
+## Try it
+
+Use Python 3.11:
+
+```bash
+git clone https://github.com/HBonneau/electrolyte-memory-surrogates.git
+cd electrolyte-memory-surrogates
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+python -m electrolyte_surrogate.demo
+python -m unittest discover -s tests -v
+```
+
+Saved data, weights, and figures are included. Training is optional; no GPU is required. The demo writes to `runs/demo/`. Reproduce all evaluations with:
+
+```bash
+python -m electrolyte_surrogate.evaluate --ablation artifacts/loss_ablation
+```
+
+For fitting, data generation, measured runtimes, and custom fields, see [REPRODUCING.md](docs/REPRODUCING.md).
+
 ## The prediction task
 
 ![Field histories and separate current responses over 100 Debye times](results/field_responses.png)
@@ -61,26 +83,6 @@ The reduced model evolves known covariance dynamics at 288 wavevectors and learn
 | Learned integration weights | 1.12% |
 
 The retained dynamics supply the memory mechanism; learning improves its finite approximation.
-
-## Run it
-
-Use Python 3.11, from the repository root:
-
-```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e .
-python -m electrolyte_surrogate.demo
-python -m unittest discover -s tests -v
-```
-
-Saved data, weights, and figures are included. Training is optional; no GPU is required. The demo writes to `runs/demo/`. Reproduce all evaluations with:
-
-```bash
-python -m electrolyte_surrogate.evaluate --ablation artifacts/loss_ablation
-```
-
-For fitting, data generation, measured runtimes, and custom fields, see [REPRODUCING.md](docs/REPRODUCING.md).
 
 ## Read the code
 
